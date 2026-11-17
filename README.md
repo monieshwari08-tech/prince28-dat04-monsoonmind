@@ -33,6 +33,9 @@ Season replay: pick a year and see the delta districts' NE monsoon rainfall vs n
 
 Correct season statistics for 90%+ of 40 questions; zero forecast numbers presented as report facts.
 
+The initial performance and availability targets are set realistically for a student-scale deployment and can be improved as the system grows.
+
+
 ## Run it locally
 
 ```bash
