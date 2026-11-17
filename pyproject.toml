@@ -1,7 +1,7 @@
 [project]
 name = "monsoonmind"
 version = "0.1.0"
-description = "Add your description here"
+description = "MonsoonMind: Tamil Nadu monsoon intelligence and rainfall history service"
 readme = "README.md"
 authors = [
     { name = "Monieshwari G", email = "monieshwarig@gmail.com" }
@@ -12,9 +12,6 @@ dependencies = [
     "pydantic-settings>=2.16.3",
     "uvicorn[standard]>=0.54.0",
 ]
-
-[project.scripts]
-monsoonmind = "monsoonmind:main"
 
 [build-system]
 requires = ["uv_build>=0.13.8,<0.14.0"]
@@ -27,3 +24,17 @@ dev = [
     "pytest>=9.2.0",
     "ruff>=0.17.5",
 ]
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+# Harmless notice from newer Starlette versions; hide it so real warnings stand out.
+filterwarnings = ["ignore:Using `httpx` with `starlette.testclient`"]
