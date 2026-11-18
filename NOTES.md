@@ -15,3 +15,24 @@ records=21 inserted=0 updated=1 unchanged=20
 
 Run 3:
 records=21 inserted=0 updated=0 unchanged=21
+
+Day 3 – EXPLAIN ANALYZE Results
+
+Query:
+SELECT id, title FROM documents
+WHERE metadata @> '{"season": "Southwest Monsoon"}'::jsonb;
+
+Normal planner:
+Seq Scan on documents
+Actual rows: 5
+Rows removed by filter: 16
+Execution time: 1.087 ms
+
+With enable_seqscan = off:
+Bitmap Heap Scan on documents
+  Bitmap Index Scan on ix_documents_metadata_gin
+Actual rows: 5
+Execution time: 1.547 ms
+
+Conclusion:
+PostgreSQL chose a sequential scan because the table contains only 21 records, making a full scan cheaper. When sequential scans were disabled, PostgreSQL used the GIN index successfully. This confirms that the metadata GIN index is working.
