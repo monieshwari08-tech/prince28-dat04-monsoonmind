@@ -198,5 +198,15 @@
     "departure_pct": 214,
     "category": "Large Excess",
     "cyclone_name": "FENGAL"
+  }  ,
+  {
+    "id": "021",
+    "season": "Northeast Monsoon",
+    "year": 2023,
+    "region": "Thanjavur",
+    "rainfall_mm": 345.5,
+    "departure_pct": -40,
+    "category": "Deficient",
+    "cyclone_name": null
   }
 ]
