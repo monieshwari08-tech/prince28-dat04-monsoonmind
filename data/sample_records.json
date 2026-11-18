@@ -1,0 +1,53 @@
+
+[
+  {
+    "id": "001",
+    "season": "Southwest Monsoon",
+    "year": 2024,
+    "region": "India",
+    "rainfall_mm": 935.9,
+    "departure_pct": 8,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "002",
+    "season": "Southwest Monsoon",
+    "year": 2024,
+    "region": "Northwest India",
+    "rainfall_mm": 742.8,
+    "departure_pct": 11,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "003",
+    "season": "Southwest Monsoon",
+    "year": 2024,
+    "region": "Central India",
+    "rainfall_mm": 1168.5,
+    "departure_pct": 19,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "004",
+    "season": "Southwest Monsoon",
+    "year": 2024,
+    "region": "South Peninsula",
+    "rainfall_mm": 815.6,
+    "departure_pct": 14,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "005",
+    "season": "Southwest Monsoon",
+    "year": 2024,
+    "region": "East and Northeast India",
+    "rainfall_mm": 1185.2,
+    "departure_pct": -13,
+    "category": "Normal",
+    "cyclone_name": null
+  }
+]
