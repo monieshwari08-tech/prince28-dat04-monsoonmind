@@ -36,3 +36,10 @@ Execution time: 1.547 ms
 
 Conclusion:
 PostgreSQL chose a sequential scan because the table contains only 21 records, making a full scan cheaper. When sequential scans were disabled, PostgreSQL used the GIN index successfully. This confirms that the metadata GIN index is working.
+
+Why did the planner choose a Seq Scan?
+The table contains only 21 records, so scanning all rows is cheaper.
+The planner estimates a sequential scan will be faster for this small table.
+
+When would it switch to the GIN index?
+When the table grows and the planner estimates that using the GIN index is cheaper for the filter.
