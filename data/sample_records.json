@@ -1,11 +1,10 @@
-
 [
   {
     "id": "001",
     "season": "Southwest Monsoon",
     "year": 2024,
     "region": "India",
-    "rainfall_mm": 935.9,
+    "rainfall_mm": 934.8,
     "departure_pct": 8,
     "category": "Normal",
     "cyclone_name": null
@@ -15,8 +14,8 @@
     "season": "Southwest Monsoon",
     "year": 2024,
     "region": "Northwest India",
-    "rainfall_mm": 742.8,
-    "departure_pct": 11,
+    "rainfall_mm": 628.6,
+    "departure_pct": 7,
     "category": "Normal",
     "cyclone_name": null
   },
@@ -35,7 +34,7 @@
     "season": "Southwest Monsoon",
     "year": 2024,
     "region": "South Peninsula",
-    "rainfall_mm": 815.6,
+    "rainfall_mm": 815.4,
     "departure_pct": 14,
     "category": "Normal",
     "cyclone_name": null
@@ -45,9 +44,159 @@
     "season": "Southwest Monsoon",
     "year": 2024,
     "region": "East and Northeast India",
-    "rainfall_mm": 1185.2,
-    "departure_pct": -13,
+    "rainfall_mm": 1178.7,
+    "departure_pct": -14,
     "category": "Normal",
     "cyclone_name": null
+  },
+  {
+    "id": "006",
+    "season": "Southwest Monsoon - June",
+    "year": 2024,
+    "region": "India",
+    "rainfall_mm": 147.2,
+    "departure_pct": -11,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "007",
+    "season": "Southwest Monsoon - July",
+    "year": 2024,
+    "region": "India",
+    "rainfall_mm": 305.8,
+    "departure_pct": 9,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "008",
+    "season": "Southwest Monsoon - August",
+    "year": 2024,
+    "region": "India",
+    "rainfall_mm": 293.9,
+    "departure_pct": 15,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "009",
+    "season": "Southwest Monsoon - September",
+    "year": 2024,
+    "region": "India",
+    "rainfall_mm": 187.3,
+    "departure_pct": 12,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "010",
+    "season": "Northeast Monsoon",
+    "year": 2024,
+    "region": "Coastal Andhra Pradesh and Yanam",
+    "rainfall_mm": 292.5,
+    "departure_pct": -9,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "011",
+    "season": "Northeast Monsoon",
+    "year": 2024,
+    "region": "Rayalaseema",
+    "rainfall_mm": 344.4,
+    "departure_pct": 46,
+    "category": "Excess",
+    "cyclone_name": null
+  },
+  {
+    "id": "012",
+    "season": "Northeast Monsoon",
+    "year": 2024,
+    "region": "Tamil Nadu, Puducherry and Karaikal",
+    "rainfall_mm": 589.9,
+    "departure_pct": 33,
+    "category": "Excess",
+    "cyclone_name": "FENGAL"
+  },
+  {
+    "id": "013",
+    "season": "Northeast Monsoon",
+    "year": 2024,
+    "region": "South Interior Karnataka",
+    "rainfall_mm": 285.5,
+    "departure_pct": 43,
+    "category": "Excess",
+    "cyclone_name": null
+  },
+  {
+    "id": "014",
+    "season": "Northeast Monsoon",
+    "year": 2024,
+    "region": "Kerala and Mahe",
+    "rainfall_mm": 487.2,
+    "departure_pct": -1,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "015",
+    "season": "Northeast Monsoon - October",
+    "year": 2024,
+    "region": "Tamil Nadu",
+    "rainfall_mm": 214.2,
+    "departure_pct": 25,
+    "category": "Excess",
+    "cyclone_name": null
+  },
+  {
+    "id": "016",
+    "season": "Northeast Monsoon - November",
+    "year": 2024,
+    "region": "Tamil Nadu",
+    "rainfall_mm": 140.2,
+    "departure_pct": -23,
+    "category": "Deficient",
+    "cyclone_name": null
+  },
+  {
+    "id": "017",
+    "season": "Northeast Monsoon - December",
+    "year": 2024,
+    "region": "Tamil Nadu",
+    "rainfall_mm": 235.5,
+    "departure_pct": 164,
+    "category": "Large Excess",
+    "cyclone_name": "FENGAL"
+  },
+  {
+    "id": "018",
+    "season": "Northeast Monsoon - October",
+    "year": 2024,
+    "region": "Coastal Andhra Pradesh and Yanam",
+    "rainfall_mm": 170.7,
+    "departure_pct": -6,
+    "category": "Normal",
+    "cyclone_name": null
+  },
+  {
+    "id": "019",
+    "season": "Northeast Monsoon - November",
+    "year": 2024,
+    "region": "Coastal Andhra Pradesh and Yanam",
+    "rainfall_mm": 39.0,
+    "departure_pct": -66,
+    "category": "Largely Deficient",
+    "cyclone_name": null
+  },
+  {
+    "id": "020",
+    "season": "Northeast Monsoon - December",
+    "year": 2024,
+    "region": "Coastal Andhra Pradesh and Yanam",
+    "rainfall_mm": 86.6,
+    "departure_pct": 214,
+    "category": "Large Excess",
+    "cyclone_name": "FENGAL"
   }
 ]
