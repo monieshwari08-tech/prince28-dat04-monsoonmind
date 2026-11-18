@@ -1,6 +1,7 @@
 [
   {
     "id": "001",
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf",
     "season": "Southwest Monsoon",
     "year": 2024,
     "region": "India",
@@ -17,7 +18,8 @@
     "rainfall_mm": 628.6,
     "departure_pct": 7,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "003",
@@ -27,7 +29,8 @@
     "rainfall_mm": 1168.5,
     "departure_pct": 19,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "004",
@@ -37,7 +40,8 @@
     "rainfall_mm": 815.4,
     "departure_pct": 14,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "005",
@@ -47,7 +51,8 @@
     "rainfall_mm": 1178.7,
     "departure_pct": -14,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "006",
@@ -57,7 +62,8 @@
     "rainfall_mm": 147.2,
     "departure_pct": -11,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "007",
@@ -67,7 +73,8 @@
     "rainfall_mm": 305.8,
     "departure_pct": 9,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "008",
@@ -77,7 +84,8 @@
     "rainfall_mm": 293.9,
     "departure_pct": 15,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "009",
@@ -87,7 +95,8 @@
     "rainfall_mm": 187.3,
     "departure_pct": 12,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/sw_monsoon_2024.pdf"
   },
   {
     "id": "010",
@@ -97,7 +106,8 @@
     "rainfall_mm": 292.5,
     "departure_pct": -9,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "011",
@@ -107,7 +117,8 @@
     "rainfall_mm": 344.4,
     "departure_pct": 46,
     "category": "Excess",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "012",
@@ -117,7 +128,8 @@
     "rainfall_mm": 589.9,
     "departure_pct": 33,
     "category": "Excess",
-    "cyclone_name": "FENGAL"
+    "cyclone_name": "FENGAL",
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "013",
@@ -127,7 +139,8 @@
     "rainfall_mm": 285.5,
     "departure_pct": 43,
     "category": "Excess",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "014",
@@ -137,7 +150,8 @@
     "rainfall_mm": 487.2,
     "departure_pct": -1,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "015",
@@ -147,7 +161,8 @@
     "rainfall_mm": 214.2,
     "departure_pct": 25,
     "category": "Excess",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "016",
@@ -157,7 +172,8 @@
     "rainfall_mm": 140.2,
     "departure_pct": -23,
     "category": "Deficient",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "017",
@@ -167,7 +183,8 @@
     "rainfall_mm": 235.5,
     "departure_pct": 164,
     "category": "Large Excess",
-    "cyclone_name": "FENGAL"
+    "cyclone_name": "FENGAL",
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "018",
@@ -177,7 +194,8 @@
     "rainfall_mm": 170.7,
     "departure_pct": -6,
     "category": "Normal",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "019",
@@ -187,7 +205,8 @@
     "rainfall_mm": 39.0,
     "departure_pct": -66,
     "category": "Largely Deficient",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
   },
   {
     "id": "020",
@@ -197,16 +216,18 @@
     "rainfall_mm": 86.6,
     "departure_pct": 214,
     "category": "Large Excess",
-    "cyclone_name": "FENGAL"
-  }  ,
+    "cyclone_name": "FENGAL",
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf"
+  },
   {
     "id": "021",
     "season": "Northeast Monsoon",
     "year": 2023,
     "region": "Thanjavur",
-    "rainfall_mm": 345.5,
+    "rainfall_mm": 346.5,
     "departure_pct": -40,
     "category": "Deficient",
-    "cyclone_name": null
+    "cyclone_name": null,
+    "source_url": "https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2023.pdf"
   }
 ]
