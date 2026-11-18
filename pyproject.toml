@@ -32,6 +32,9 @@ dev = [
 [tool.ruff]
 line-length = 100
 target-version = "py312"
+# Alembic writes these files; we review them but don't restyle them.
+extend-exclude = ["migrations/versions"]
+force-exclude = true
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM"]

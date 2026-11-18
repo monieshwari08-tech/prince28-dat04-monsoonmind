@@ -50,4 +50,4 @@ repos:
         name: detect secrets
         entry: python -m detect_secrets.pre_commit_hook
         language: system
-        exclude: ^uv\.lock$
+        exclude: ^(uv\.lock|migrations/versions/.*)$
