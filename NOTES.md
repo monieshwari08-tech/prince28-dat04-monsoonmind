@@ -46,6 +46,18 @@ When the table grows and the planner estimates that using the GIN index is cheap
 
 ## Day 4 – Docker, Compose and Tests
 
+### Clean clone verification
+
+- Cloned the repository from GitHub into a fresh folder.
+- Copied .env.example to .env.
+- docker compose up --build completed successfully.
+- Verified using a separate Compose project name and fresh database volume.
+- PostgreSQL and Redis became healthy.
+- Fresh migrations completed successfully.
+- Sample records: 21 inserted=21, updated=0, unchanged=0.
+- API /ready returned HTTP 200 OK.
+- Clean clone startup and fresh database verification passed.
+
 ### Docker image
 
 - Image: monsoonmind:dev
@@ -97,3 +109,14 @@ Total tests with integration: 23 passed.
 ### Coverage observations
 
 Some logging and middleware lines were not exercised by the tests. These are areas where additional tests could improve coverage; uncovered lines do not automatically indicate bugs.
+### Clean clone verification
+
+- Cloned the repository from GitHub into a fresh folder.
+- Copied .env.example to .env.
+- docker compose up --build completed successfully.
+- Used a separate Compose project name and fresh database volume.
+- PostgreSQL and Redis became healthy.
+- Fresh migrations completed successfully.
+- Sample records: 21 inserted=21, updated=0, unchanged=0.
+- API /ready returned HTTP 200 OK.
+- Clean clone startup and fresh database verification passed.
