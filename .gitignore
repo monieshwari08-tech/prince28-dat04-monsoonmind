@@ -18,3 +18,4 @@ data/raw/
 .vscode/
 .idea/
 .DS_Store
+.coverage
