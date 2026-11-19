@@ -43,3 +43,50 @@ The planner estimates a sequential scan will be faster for this small table.
 
 When would it switch to the GIN index?
 When the table grows and the planner estimates that using the GIN index is cheaper for the filter.
+
+## Day 4 – Docker, Compose and Tests
+
+### Docker image
+
+- Image: monsoonmind:dev
+- Size: approximately 70 MB (target: under 400 MB)
+- Container runs as non-root user: uid=999(app), gid=999(app).
+- Dependency installation layer is cached when pyproject.toml and uv.lock remain unchanged.
+
+### Docker Compose stack
+
+- PostgreSQL with pgvector: healthy
+- Redis: healthy
+- Migration service: exited with code 0
+- API: healthy
+- Sample records loaded: 21
+
+First load:
+records=21 inserted=21 updated=0 unchanged=0
+
+Second load:
+records=21 inserted=0 updated=0 unchanged=21
+
+### Database failure and recovery
+
+Database stopped:
+- /health: {"status":"ok","app":"monsoonmind","env":"local"}
+- /ready: {"status":"not_ready","checks":{"database":false}}
+
+Database restarted:
+- /ready: {"status":"ready","checks":{"database":true}}
+
+A load balancer should stop sending traffic when readiness fails because the database is unavailable. The application should not restart because its process is still healthy.
+
+### Tests and coverage
+
+- Unit tests: 16 passed
+- Integration tests: 7 passed
+- Unit-only coverage: 83%
+- Coverage with integration tests: 92%
+
+Total tests with integration: 23 passed.
+
+### Coverage observations
+
+Some logging and middleware lines were not exercised by the tests. These are areas where additional tests could improve coverage; uncovered lines do not automatically indicate bugs.
