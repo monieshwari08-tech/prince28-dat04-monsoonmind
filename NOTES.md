@@ -70,6 +70,13 @@ records=21 inserted=0 updated=0 unchanged=21
 ### Database failure and recovery
 
 Database stopped:
+- /health: HTTP 200 OK — {"status":"ok","app":"monsoonmind","env":"local"}
+- /ready: HTTP 503 Service Unavailable — {"status":"not_ready","checks":{"database":false}}
+
+Database restarted:
+- /ready: HTTP 200 OK — {"status":"ready","checks":{"database":true}}
+
+Database stopped:
 - /health: {"status":"ok","app":"monsoonmind","env":"local"}
 - /ready: {"status":"not_ready","checks":{"database":false}}
 
