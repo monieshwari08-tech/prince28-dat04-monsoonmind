@@ -1,11 +1,11 @@
-Day 2 – Database Migrations
+﻿Day 2 â€“ Database Migrations
 
 3134f8dd9f33 -> c41df4754b2a (head), add gin index on metadata
 
 <base> -> 3134f8dd9f33, create documents and pages
 
 
-Day 3 – Idempotent Loader Test Results
+Day 3 â€“ Idempotent Loader Test Results
 
 Run 1:
 records=21 inserted=0 updated=0 unchanged=21
@@ -16,7 +16,7 @@ records=21 inserted=0 updated=1 unchanged=20
 Run 3:
 records=21 inserted=0 updated=0 unchanged=21
 
-Day 3 – EXPLAIN ANALYZE Results
+Day 3 â€“ EXPLAIN ANALYZE Results
 
 Query:
 SELECT id, title FROM documents
@@ -44,7 +44,7 @@ The planner estimates a sequential scan will be faster for this small table.
 When would it switch to the GIN index?
 When the table grows and the planner estimates that using the GIN index is cheaper for the filter.
 
-## Day 4 – Docker, Compose and Tests
+## Day 4 â€“ Docker, Compose and Tests
 
 ### Clean clone verification
 
@@ -82,11 +82,11 @@ records=21 inserted=0 updated=0 unchanged=21
 ### Database failure and recovery
 
 Database stopped:
-- /health: HTTP 200 OK — {"status":"ok","app":"monsoonmind","env":"local"}
-- /ready: HTTP 503 Service Unavailable — {"status":"not_ready","checks":{"database":false}}
+- /health: HTTP 200 OK â€” {"status":"ok","app":"monsoonmind","env":"local"}
+- /ready: HTTP 503 Service Unavailable â€” {"status":"not_ready","checks":{"database":false}}
 
 Database restarted:
-- /ready: HTTP 200 OK — {"status":"ready","checks":{"database":true}}
+- /ready: HTTP 200 OK â€” {"status":"ready","checks":{"database":true}}
 
 Database stopped:
 - /health: {"status":"ok","app":"monsoonmind","env":"local"}
@@ -120,3 +120,75 @@ Some logging and middleware lines were not exercised by the tests. These are are
 - Sample records: 21 inserted=21, updated=0, unchanged=0.
 - API /ready returned HTTP 200 OK.
 - Clean clone startup and fresh database verification passed.
+
+## Day 5 - CI, Deployment, Rollback and Monitoring
+
+### Production deployment
+
+- Live URL: https://monsoonmind.onrender.com
+- API documentation: https://monsoonmind.onrender.com/docs
+- Health endpoint: https://monsoonmind.onrender.com/health
+- Readiness endpoint: https://monsoonmind.onrender.com/ready
+
+### CI and automatic deployment
+
+- CI workflow: https://github.com/monieshwari08-tech/prince28-dat04-monsoonmind/actions/workflows/ci.yml
+- CD workflow: https://github.com/monieshwari08-tech/prince28-dat04-monsoonmind/actions/workflows/cd.yml
+- First successful automatic deployment: CD #1
+- CD #1 commit: 87906142fe3df05fc2b8bfee5f8c886b166f18fc
+- CD #1 result: Success (45 seconds)
+- Smoke test: Passed
+- Health: Production OK
+- Readiness: Ready (database=True)
+- Documents endpoint: OK
+
+### Roll-forward verification
+
+- CD #4 result: Success (29 seconds)
+- Roll-forward version: ebc9e78314c5205007e2c7be9e4e2d49a2b35d9e
+- Health: Production OK
+- Readiness: Ready (database=True)
+- Documents endpoint: OK
+- Smoke test: Passed
+
+### Latest deployment
+
+- CD #5 result: Success (31 seconds)
+- Deployed version: a6c92cf8862449799a5456b789a2cace0571d773
+- Health: Production OK
+- Readiness: Ready (database=True)
+- Documents endpoint: OK
+- Smoke test: Passed
+
+### Rollback drill
+
+- Rollback target version: 87906142fe3df05fc2b8bfee5f8c886b166f18fc
+- CD #3 initial smoke test reported a version mismatch because the live deployment had not finished switching.
+- The live /health endpoint subsequently confirmed the rollback target version.
+- Database schema was not downgraded during rollback; only the application image was changed.
+- Rollbacks are safe only when the newer database schema remains backward-compatible with the older application version.
+
+### Monitoring and nightly health check
+
+- UptimeRobot monitor: https://monsoonmind.onrender.com/health
+- Check interval: Every 5 minutes
+- Monitor status: Up
+- Nightly GitHub Actions workflow: Nightly Health Check
+- Schedule: 18:30 UTC (00:00 IST)
+- Manual nightly health check: Successful
+- Email alert configuration: Not yet verified
+
+### Secrets
+
+- GitHub Actions secrets: RENDER_DEPLOY_HOOK, DATABASE_URL
+- GitHub Actions variable: LIVE_URL
+- Render environment variables: APP_ENV, DATABASE_URL
+- Secret values are not stored in this file.
+
+### Performance improvement
+
+Render Free services can sleep after inactivity. A future improvement is to optimize application startup and reduce cold-start time.
+
+### Remaining timing details
+
+Exact merge time, smoke-test completion time, rollback time and roll-forward time should be recorded from the corresponding GitHub Actions run timestamps.
