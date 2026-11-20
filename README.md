@@ -2,7 +2,16 @@
 
 Explains Tamil Nadu's monsoon and weather history from IMD reports (northeast monsoon statistics, district rainfall, cyclone reports) and sets it next to live forecasts.
 
-**Status:** Day 1 foundation (FastAPI skeleton, quality gates). Live URL from Day 5.
+
+[![CI](https://github.com/monieshwari08-tech/prince28-dat04-monsoonmind/actions/workflows/ci.yml/badge.svg)](https://github.com/monieshwari08-tech/prince28-dat04-monsoonmind/actions/workflows/ci.yml)
+[![Live](https://img.shields.io/website?url=https%3A%2F%2Fmonsoonmind.onrender.com%2Fhealth&label=Live)](https://monsoonmind.onrender.com)
+
+**Live Application:** https://monsoonmind.onrender.com
+
+- API Documentation: https://monsoonmind.onrender.com/docs
+- Health Check: https://monsoonmind.onrender.com/health
+- Readiness Check: https://monsoonmind.onrender.com/ready
+
 
 ## Who it's for
 
