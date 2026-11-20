@@ -7,7 +7,7 @@ Explains Tamil Nadu's monsoon and weather history from IMD reports (northeast mo
 [![Live](https://img.shields.io/website?url=https%3A%2F%2Fmonsoonmind.onrender.com%2Fhealth&label=Live)](https://monsoonmind.onrender.com)
 
 **Live Application:** https://monsoonmind.onrender.com
-[![Uptime](https://img.shields.io/uptimerobot/status/YOUR_KEY?label=Uptime)](https://monsoonmind.onrender.com/health)
+[![Uptime](https://img.shields.io/uptimerobot/status/m804749187-86821b474f2c798ef4894b77?label=Uptime)](https://monsoonmind.onrender.com/health)
 
 - API Documentation: https://monsoonmind.onrender.com/docs
 - Health Check: https://monsoonmind.onrender.com/health
