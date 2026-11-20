@@ -1,0 +1,82 @@
+
+name: CD
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      rollback_sha:
+        description: "Full commit SHA to deploy (leave empty for latest main)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  packages: read
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event.workflow_run.conclusion == 'success')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          ref: main
+
+      - name: Select image SHA
+        id: version
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            SHA="${{ inputs.rollback_sha }}"
+            if [[ -z "$SHA" ]]; then
+              SHA="${GITHUB_SHA}"
+            fi
+          else
+            SHA="${{ github.event.workflow_run.head_sha }}"
+          fi
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: astral-sh/setup-uv@v10.3.3
+        with:
+          version: "0.11.32"
+
+      - name: Run production migrations
+        if: github.event_name != 'workflow_dispatch' || inputs.rollback_sha == ''
+        env:
+          APP_ENV: production
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          uv sync --locked
+          uv run alembic upgrade head
+
+      - name: Trigger Render deployment
+        shell: bash
+        env:
+          RENDER_DEPLOY_HOOK: ${{ secrets.RENDER_DEPLOY_HOOK }}
+          IMAGE: ghcr.io/${{ github.repository }}
+          SHA: ${{ steps.version.outputs.sha }}
+        run: |
+          IMAGE="${IMAGE,,}:sha-${SHA}"
+          ENCODED_IMAGE=$(python -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1], safe=''))" "$IMAGE")
+          curl --fail --show-error --silent \
+            "${RENDER_DEPLOY_HOOK}&imgURL=${ENCODED_IMAGE}"
+
+      - name: Smoke test live service
+        env:
+          LIVE_URL: ${{ vars.LIVE_URL }}
+          SHA: ${{ steps.version.outputs.sha }}
+        run: |
+          uv sync --locked
+          uv run python scripts/smoke.py "$LIVE_URL" --expect-version "$SHA"

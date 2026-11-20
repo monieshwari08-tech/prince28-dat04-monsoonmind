@@ -1,5 +1,4 @@
 
-
 # syntax=docker/dockerfile:1
 
 # ---------- Stage 1: build the virtual environment ----------
@@ -13,13 +12,13 @@ ENV UV_COMPILE_BYTECODE=1 \
 
 WORKDIR /app
 
-# 1) Dependencies only
+# Dependencies only
 RUN --mount=type=cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-install-project --no-dev
 
-# 2) Application code
+# Application code
 COPY . /app
 
 RUN --mount=type=cache,target=/root/.cache/uv \
@@ -32,6 +31,8 @@ RUN groupadd --system app && useradd --system --gid app --home-dir /app --no-cre
 
 WORKDIR /app
 
+ARG GIT_SHA=unknown
+
 COPY --from=builder --chown=app:app /app/.venv /app/.venv
 COPY --chown=app:app alembic.ini ./
 COPY --chown=app:app migrations ./migrations
@@ -40,7 +41,8 @@ COPY --chown=app:app data ./data
 
 ENV PATH="/app/.venv/bin:$PATH" \
     PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
+    PYTHONDONTWRITEBYTECODE=1 \
+    GIT_SHA=${GIT_SHA}
 
 USER app
 
