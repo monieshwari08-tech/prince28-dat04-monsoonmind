@@ -1,0 +1,22 @@
+
+name: Nightly Health Check
+
+on:
+  schedule:
+    - cron: "30 18 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  health-check:
+    name: Check live health
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check production health endpoint
+        env:
+          LIVE_URL: https://monsoonmind.onrender.com
+        run: |
+          curl --fail --show-error --silent \
+            "$LIVE_URL/health"
