@@ -1,9 +1,9 @@
 ## D03 - PostgreSQL and Database Evidence
-Day 2 â€“ Database Migrations
+Day 2 – Database Migrations
 
 3134f8dd9f33 -> c41df4754b2a (head), add gin index on metadata
-<base> -> 3134f4754b2a, create documents and pages
-Day 3 â€“ Idempotent Loader Test Results
+<base> -> 3134f8dd9f33, create documents and pages
+Day 3 – Idempotent Loader Test Results
 
 Run 1:
 records=21 inserted=0 updated=0 unchanged=21
@@ -14,7 +14,7 @@ records=21 inserted=0 updated=1 unchanged=20
 Run 3:
 records=21 inserted=0 updated=0 unchanged=21
 
-Day 3 â€“ EXPLAIN ANALYZE Results
+Day 3 – EXPLAIN ANALYZE Results
 
 Query:
 SELECT id, title FROM documents
@@ -41,7 +41,7 @@ The planner estimates a sequential scan will be faster for this small table.
 
 When would it switch to the GIN index?
 When the table grows and the planner estimates that using the GIN index is cheaper for the filter.
-Day 4 â€“ Docker, Compose and Tests
+Day 4 – Docker, Compose and Tests
 Clean clone verification
 - Cloned the repository from GitHub into a fresh folder.
 - Copied .env.example to .env.
@@ -70,10 +70,10 @@ Second load:
 records=21 inserted=0 updated=0 unchanged=21
 Database failure and recovery
 Database stopped:
-- /health: HTTP 200 OK â€” {"status":"ok","app":"monsoonmind","env":"local"}
-- /ready: HTTP 503 Service Unavailable â€” {"status":"not_ready","checks":{"database":false}}
+- /health: HTTP 200 OK — {"status":"ok","app":"monsoonmind","env":"local"}
+- /ready: HTTP 503 Service Unavailable — {"status":"not_ready","checks":{"database":false}}
 Database restarted:
-- /ready: HTTP 200 OK â€” {"status":"ready","checks":{"database":true}}
+- /ready: HTTP 200 OK — {"status":"ready","checks":{"database":true}}
 Database stopped:
 - /health: {"status":"ok","app":"monsoonmind","env":"local"}
 - /ready: {"status":"not_ready","checks":{"database":false}}
