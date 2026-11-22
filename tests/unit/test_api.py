@@ -1,6 +1,10 @@
+import asyncio
+from types import SimpleNamespace
+
 import pytest
 from pydantic import ValidationError
 
+from monsoonmind.api.deps import check_db
 from monsoonmind.config import Settings
 from monsoonmind.db.url import to_asyncpg_url
 
@@ -95,3 +99,19 @@ def test_app_refuses_to_start_without_required_settings(monkeypatch, missing):
 )
 def test_database_url_is_converted_for_asyncpg(raw, expected):
     assert to_asyncpg_url(raw) == expected
+
+
+def test_check_db_returns_false_when_connection_fails():
+    class BrokenConnection:
+        async def __aenter__(self):
+            raise RuntimeError("Database connection failed")
+
+        async def __aexit__(self, exc_type, exc_value, traceback):
+            return False
+
+    engine = SimpleNamespace(connect=lambda: BrokenConnection())
+    request = SimpleNamespace(app=SimpleNamespace(state=SimpleNamespace(engine=engine)))
+
+    result = asyncio.run(check_db(request))
+
+    assert result is False
