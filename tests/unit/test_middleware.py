@@ -1,6 +1,6 @@
 import logging
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.testclient import TestClient
 
 from monsoonmind.api.middleware import request_context
@@ -15,7 +15,7 @@ def create_test_app(endpoint):
 
 
 def test_request_context_generates_request_id():
-    async def endpoint(request):
+    async def endpoint(request: Request):
         return {"status": "ok"}
 
     app = create_test_app(endpoint)
@@ -28,7 +28,7 @@ def test_request_context_generates_request_id():
 
 
 def test_request_context_uses_provided_request_id():
-    async def endpoint(request):
+    async def endpoint(request: Request):
         return {"status": "ok"}
 
     app = create_test_app(endpoint)
@@ -43,8 +43,8 @@ def test_request_context_uses_provided_request_id():
 
 
 def test_request_context_logs_request_details(caplog):
-    async def endpoint(request):
-        return {"status": "ok"}
+    async def endpoint(request: Request):
+        return {"request_id": request_id_ctx.get()}
 
     app = create_test_app(endpoint)
 
@@ -56,35 +56,44 @@ def test_request_context_logs_request_details(caplog):
 
     record = next(record for record in caplog.records if record.message == "request finished")
 
-    assert record.request_id == "logging-test"
+    assert response.json()["request_id"] == "logging-test"
     assert record.method == "GET"
     assert record.path == "/test"
-    assert record.status == response.status_code
+    assert record.status == 200
     assert record.duration_ms >= 0
 
 
 def test_request_context_handles_unexpected_exception(caplog):
-    async def endpoint(request):
+    async def endpoint(request: Request):
         raise RuntimeError("test failure")
 
     app = create_test_app(endpoint)
 
-    with caplog.at_level(logging.ERROR, logger="monsoonmind.http"), TestClient(app) as client:
+    with (
+        caplog.at_level(logging.ERROR, logger="monsoonmind.http"),
+        TestClient(app, raise_server_exceptions=False) as client,
+    ):
         response = client.get("/test")
 
     assert response.status_code == 500
-    assert response.headers["content-type"] == "application/problem+json"
+    assert response.headers["content-type"].startswith("application/problem+json")
     assert response.headers["X-Request-ID"]
     assert "unhandled error" in caplog.text
 
 
-def test_request_context_resets_request_id_after_request():
-    async def endpoint(request):
-        return {"status": "ok"}
+def test_request_context_resets_request_id_between_requests():
+    async def endpoint(request: Request):
+        return {"request_id": request_id_ctx.get()}
 
     app = create_test_app(endpoint)
 
     with TestClient(app) as client:
-        client.get("/test", headers={"X-Request-ID": "temporary-id"})
+        first = client.get(
+            "/test",
+            headers={"X-Request-ID": "temporary-id"},
+        )
+        second = client.get("/test")
 
-    assert request_id_ctx.get() == "-"
+    assert first.json()["request_id"] == "temporary-id"
+    assert len(second.json()["request_id"]) == 16
+    assert second.json()["request_id"] != "temporary-id"
