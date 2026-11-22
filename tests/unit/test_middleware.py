@@ -1,4 +1,4 @@
-import logging
+from unittest.mock import patch
 
 from fastapi import FastAPI, Request
 from fastapi.testclient import TestClient
@@ -42,35 +42,41 @@ def test_request_context_uses_provided_request_id():
     assert response.headers["X-Request-ID"] == "custom-request-123"
 
 
-def test_request_context_logs_request_details(caplog):
+def test_request_context_logs_request_details():
     async def endpoint(request: Request):
         return {"request_id": request_id_ctx.get()}
 
     app = create_test_app(endpoint)
 
-    with caplog.at_level(logging.INFO, logger="monsoonmind.http"), TestClient(app) as client:
+    with (
+        patch("monsoonmind.api.middleware.logger.info") as log_info,
+        TestClient(app) as client,
+    ):
         response = client.get(
             "/test",
             headers={"X-Request-ID": "logging-test"},
         )
 
-    record = next(record for record in caplog.records if record.message == "request finished")
-
     assert response.json()["request_id"] == "logging-test"
-    assert record.method == "GET"
-    assert record.path == "/test"
-    assert record.status == 200
-    assert record.duration_ms >= 0
+
+    log_info.assert_called_once()
+    args, kwargs = log_info.call_args
+
+    assert args == ("request finished",)
+    assert kwargs["extra"]["method"] == "GET"
+    assert kwargs["extra"]["path"] == "/test"
+    assert kwargs["extra"]["status"] == 200
+    assert kwargs["extra"]["duration_ms"] >= 0
 
 
-def test_request_context_handles_unexpected_exception(caplog):
+def test_request_context_handles_unexpected_exception():
     async def endpoint(request: Request):
         raise RuntimeError("test failure")
 
     app = create_test_app(endpoint)
 
     with (
-        caplog.at_level(logging.ERROR, logger="monsoonmind.http"),
+        patch("monsoonmind.api.middleware.logger.exception") as log_exception,
         TestClient(app, raise_server_exceptions=False) as client,
     ):
         response = client.get("/test")
@@ -78,7 +84,8 @@ def test_request_context_handles_unexpected_exception(caplog):
     assert response.status_code == 500
     assert response.headers["content-type"].startswith("application/problem+json")
     assert response.headers["X-Request-ID"]
-    assert "unhandled error" in caplog.text
+
+    log_exception.assert_called_once_with("unhandled error")
 
 
 def test_request_context_resets_request_id_between_requests():
