@@ -1,0 +1,14 @@
+﻿# Sources for MonsoonMind. One row per document.
+# Public IMD documents; copyright applies.
+# Automated download and reuse permission not confirmed.
+url,source,licence,title
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2025.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2025
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2024.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2024
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2023.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2023
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2022.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2022
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2021.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2021
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2020.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2020
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2019.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2019
+https://mausam.imd.gov.in/chennai/mcdata/ne_monsoon_2018.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Northeast Monsoon 2018
+https://mausam.imd.gov.in/chennai/imsimd/archives/BREEZE_Vol16_No2_Dec2016.pdf,imd_chennai,"Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required",Salient Features of Northeast Monsoon 2016
+https://api.imd.gov.in/public/api_reference.html,imd_api,"Public IMD reference; automated download and reuse permission not confirmed; manual review required",IMD Rainfall Category Definitions

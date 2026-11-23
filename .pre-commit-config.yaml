@@ -1,53 +1,27 @@
 
+# Runs on every "git commit". If a hook fails, the commit is stopped.
 repos:
-  - repo: local
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
-        name: trim trailing whitespace
-        entry: python -m pre_commit_hooks.trailing_whitespace_fixer
-        language: system
-
       - id: end-of-file-fixer
-        name: fix end of files
-        entry: python -m pre_commit_hooks.end_of_file_fixer
-        language: system
-
       - id: check-yaml
-        name: check yaml
-        entry: python -m pre_commit_hooks.check_yaml
-        language: system
-        types: [yaml]
-
       - id: check-toml
-        name: check toml
-        entry: python -m pre_commit_hooks.check_toml
-        language: system
-        types: [toml]
-
       - id: check-added-large-files
-        name: check for added large files
-        entry: python -m pre_commit_hooks.check_added_large_files --maxkb=500
-        language: system
-
+        args: ["--maxkb=500"]
+        # the download logbook is text we choose to version, even when it grows
+        exclude: ^data/manifest\.jsonl$
       - id: detect-private-key
-        name: detect private key
-        entry: python -m pre_commit_hooks.detect_private_key
-        language: system
-
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.17.4
+    hooks:
       - id: ruff-check
-        name: ruff check
-        entry: python -m ruff check --fix
-        language: system
-        types: [python]
-
+        args: ["--fix"]
       - id: ruff-format
-        name: ruff format
-        entry: python -m ruff format
-        language: system
-        types: [python]
-
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
       - id: detect-secrets
-        name: detect secrets
-        entry: python -m detect_secrets.pre_commit_hook
-        language: system
-        exclude: ^(uv\.lock|migrations/versions/.*)$
+        # uv.lock hashes, Alembic revision ids and file fingerprints look random but are not secrets
+        exclude: ^(uv\.lock|migrations/versions/.*|data/manifest\.jsonl)$
