@@ -9,7 +9,9 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from monsoonmind.config import Settings
+from monsoonmind.db.llm_calls import UsageRepository
 from monsoonmind.db.repository import DocumentRepository
+from monsoonmind.llm.gateway import LLMGateway
 
 
 def get_app_settings(request: Request) -> Settings:
@@ -22,9 +24,7 @@ async def get_session(request: Request) -> AsyncIterator[AsyncSession]:
         yield session
 
 
-async def get_repo(
-    session: Annotated[AsyncSession, Depends(get_session)],
-) -> DocumentRepository:
+async def get_repo(session: Annotated[AsyncSession, Depends(get_session)]) -> DocumentRepository:
     return DocumentRepository(session)
 
 
@@ -38,6 +38,16 @@ async def check_db(request: Request) -> bool:
         return False
 
 
+def get_gateway(request: Request) -> LLMGateway:
+    return request.app.state.gateway
+
+
+async def get_usage_repo(session: Annotated[AsyncSession, Depends(get_session)]) -> UsageRepository:
+    return UsageRepository(session)
+
+
 SettingsDep = Annotated[Settings, Depends(get_app_settings)]
+GatewayDep = Annotated[LLMGateway, Depends(get_gateway)]
+UsageDep = Annotated[UsageRepository, Depends(get_usage_repo)]
 RepoDep = Annotated[DocumentRepository, Depends(get_repo)]
 DbCheckDep = Annotated[bool, Depends(check_db)]

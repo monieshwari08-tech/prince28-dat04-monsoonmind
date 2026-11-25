@@ -1,11 +1,11 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from monsoonmind.api.deps import check_db, get_repo
+from monsoonmind.api.deps import check_db, get_gateway, get_repo, get_usage_repo
 from monsoonmind.api.main import create_app
 from monsoonmind.config import Settings
+from monsoonmind.llm.gateway import LLMGateway
 
-# Tiny fake records: unit tests never touch a real database or your data file.
 SAMPLE = [
     {"id": "001", "title": "Alpha guideline", "year": 2023, "kind": "guideline"},
     {"id": "002", "title": "Beta circular", "year": 2024, "kind": "circular"},
@@ -14,8 +14,6 @@ SAMPLE = [
 
 
 class FakeRepo:
-    """Behaves like DocumentRepository, but keeps rows in a Python list."""
-
     def __init__(self, rows):
         self.rows = rows
 
@@ -32,9 +30,24 @@ class FakeRepo:
         return next((r for r in self.rows if r["id"] == external_id), None)
 
 
+class FakeUsageRepo:
+    async def by_day(self, days=7):
+        return [
+            {
+                "day": "2026-11-26",
+                "calls": 3,
+                "errors": 0,
+                "fallbacks": 0,
+                "tokens_in": 300,
+                "tokens_out": 30,
+                "tokens": 330,
+                "cost": 0.0642,
+            }
+        ]
+
+
 @pytest.fixture
 def settings():
-    # Ignore local .env so tests behave the same everywhere.
     return Settings(
         app_env="ci",
         database_url="postgresql://localhost:5432/unused",
@@ -48,10 +61,14 @@ def db_state():
 
 
 @pytest.fixture
-def client(settings, db_state):
+def client(settings, db_state, llm):
     app = create_app(settings)
+    gateway = LLMGateway([llm], max_attempts=1)
+
     app.dependency_overrides[get_repo] = lambda: FakeRepo(SAMPLE)
     app.dependency_overrides[check_db] = lambda: db_state["up"]
+    app.dependency_overrides[get_gateway] = lambda: gateway
+    app.dependency_overrides[get_usage_repo] = lambda: FakeUsageRepo()
 
     with TestClient(app) as c:
         yield c

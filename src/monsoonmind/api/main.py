@@ -7,9 +7,11 @@ from fastapi import APIRouter, FastAPI
 
 from monsoonmind.api.errors import register_error_handlers
 from monsoonmind.api.middleware import request_context
-from monsoonmind.api.routes import documents, health
+from monsoonmind.api.routes import chat, documents, health
 from monsoonmind.config import Settings, get_settings
+from monsoonmind.db.llm_calls import make_recorder
 from monsoonmind.db.session import make_engine, make_sessionmaker
+from monsoonmind.llm.gateway import build_gateway
 from monsoonmind.logging_setup import setup_logging
 
 logger = logging.getLogger("monsoonmind")
@@ -18,28 +20,29 @@ logger = logging.getLogger("monsoonmind")
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
     setup_logging(settings.log_level)
-
-    engine = make_engine(settings)
-    sessionmaker = make_sessionmaker(engine)
+    engine = make_engine(settings)  # no connection is opened yet
 
     @asynccontextmanager
     async def lifespan(app: FastAPI):
-        logger.info("database engine initialized")
+        logger.info("starting", extra={"status": settings.app_env})
         yield
-        await engine.dispose()
-        logger.info("database engine disposed")
+        await engine.dispose()  # close every pooled connection on shutdown
 
-    app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=lifespan)
+    app = FastAPI(title=settings.app_name, version="0.2.0", lifespan=lifespan)
     app.state.settings = settings
     app.state.engine = engine
-    app.state.sessionmaker = sessionmaker
+    app.state.sessionmaker = make_sessionmaker(engine)
+    app.state.system_prompt = chat.load_prompt(
+        settings.prompts_dir
+    )  # Missing prompt file prevents startup.
+    app.state.gateway = build_gateway(settings, make_recorder(app.state.sessionmaker))
 
     app.middleware("http")(request_context)
     register_error_handlers(app)
 
     v1 = APIRouter(prefix="/v1")
     v1.include_router(documents.router)
+    v1.include_router(chat.router)
     app.include_router(health.router)
     app.include_router(v1)
-
     return app
