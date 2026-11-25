@@ -21,7 +21,7 @@ class Settings(BaseSettings):
     data_file: Path = Path("data/sample_records.json")
     db_pool_size: int = 5
     db_max_overflow: int = 5
-        # LLM gateway (Day 8)
+    # LLM gateway (Day 8)
     gemini_api_key: str = ""
     groq_api_key: str = ""
     llm_primary_model: str = "gemini-3.8-flash"
