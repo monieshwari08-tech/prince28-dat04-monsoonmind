@@ -76,10 +76,32 @@ class Page(Base):
     )
     page_no: Mapped[int]
     text: Mapped[str] = mapped_column(Text)
+    headings: Mapped[list[str]] = mapped_column(
+        JSONB,
+        server_default="[]",
+    )
 
     document: Mapped[Document] = relationship(back_populates="pages")
 
     __table_args__ = (
         UniqueConstraint("document_id", "page_no", name="uq_pages_document_page"),
         CheckConstraint("page_no >= 1", name="page_no_positive"),
+    )
+
+
+class ParseFailure(Base):
+    """A source file that could not be parsed successfully."""
+
+    __tablename__ = "parse_failures"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    path: Mapped[str] = mapped_column(Text, unique=True)
+    sha256: Mapped[str] = mapped_column(String(64))
+    source_url: Mapped[str | None] = mapped_column(Text)
+    reason: Mapped[str] = mapped_column(String(50))
+    detail: Mapped[str | None] = mapped_column(Text)
+    attempts: Mapped[int] = mapped_column(server_default=text("1"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
     )
