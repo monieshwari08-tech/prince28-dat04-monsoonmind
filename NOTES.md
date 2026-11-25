@@ -191,3 +191,44 @@ Final Validation
 - Total coverage: 100%.
 - Tests passed: 39.
 The earlier Day 4 coverage figures are historical results. This final report supersedes those measurements.
+
+
+## D06 · Collecting the corpus
+
+- Start target: 10 years of NE monsoon reports + 20 cyclone reports.
+- Final manifest report: 23 PDF files, 2,908 pages, 297.29 MB.
+- Raw directory size: 441 MB; this is a separate measurement from the manifest-listed PDFs.
+- The earlier Day 4 coverage figures are historical results. This final report supersedes those measurements.
+- Doors used: manually collected source URL lists and official IMD/RSMC archive pages.
+
+### Licence check
+
+| Source | Licence or terms, in my words | May I show full text in answers? |
+|---|---|---|
+| IMD Chennai / MetNet | Public IMD publications; copyright applies; reuse permission not confirmed | No, not without permission review |
+| IMD RSMC | Public IMD publications; copyright applies; reuse permission not confirmed | No, not without permission review |
+| Open-Meteo | CC BY 4.0 data terms | Follow attribution and licence terms |
+
+### robots.txt
+
+- Verify each source domain's robots.txt directives before recording exact rules.
+- Confirm blocked URLs and actions from fetch logs; do not assume none were blocked.
+
+### Kill and resume
+
+- Run 1: interrupted with Ctrl+C after 4 files.
+- Run 2: downloaded=6, skipped=4.
+- Run 3: downloaded=0, skipped=10.
+- Deleted-file recovery test: downloaded=1, skipped=9.
+- Earlier partial-file check: no `.part` files remained.
+
+### Capacity
+
+- Estimated tokens per page: 334 (extracted characters divided by 4).
+- Full corpus target: 1.34 M tokens, 2,673 chunks, embedding about Rs 25.39, vectors 10.44 MB.
+- 2,900 of 2,908 pages had extractable text; 8 did not.
+
+### One thing that went wrong today, and how I fixed it
+
+- Some PDFs produced fontTools encoding warnings. The report completed and all 51 unit tests passed.
+- The raw directory measured 441 MB while manifest-listed PDFs measured 297.29 MB; I recorded these separately.
