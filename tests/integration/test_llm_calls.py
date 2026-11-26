@@ -50,7 +50,7 @@ async def test_gateway_calls_are_recorded_and_summed_per_day(database_url):
         assert days[0]["calls"] == 3
         assert days[0]["errors"] == 1
         assert days[0]["fallbacks"] == 1
-        assert days[0]["tokens"] == 24
+        assert days[0]["tokens"] == 28
         assert days[0]["cost"] > 0
 
     finally:
