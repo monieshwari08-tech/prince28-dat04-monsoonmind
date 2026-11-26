@@ -30,7 +30,7 @@ def summary(info: dict, first: float | None, total: float) -> None:
     print(f"\n--- {info['provider']} / {info['model']}: {waited}total {total:.2f} s")
     print(
         f"    tokens in={info['tokens_in']} out={info['tokens_out']}  "
-        f"cost Rs {info['cost_inr']:.6f}  attempts={info['attempts']}  "
+        f"cost Rs {info['cost_inr']:.6f}  attempts={info.get('attempts', 1)}  "
         f"fallback={'YES' if info['fallback_used'] else 'no'}"
     )
 
