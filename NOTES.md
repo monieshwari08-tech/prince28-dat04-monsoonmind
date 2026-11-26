@@ -196,8 +196,7 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 ## D06 · Collecting the corpus
 
 - Start target: 10 years of NE monsoon reports + 20 cyclone reports.
-- Final manifest report: 23 PDF files, 2,908 pages, 297.29 MB.
-- Raw directory size: 441 MB; this is a separate measurement from the manifest-listed PDFs.
+- Final dataset report: 35 PDF files, 4,466 pages, 500.99 MB; 4,162 pages have extractable text.
 - The earlier Day 4 coverage figures are historical results. This final report supersedes those measurements.
 - Doors used: manually collected source URL lists and official IMD/RSMC archive pages.
 
@@ -241,4 +240,5 @@ Checked on 2026-11-26:
 ### One thing that went wrong today, and how I fixed it
 
 - Some PDFs produced fontTools encoding warnings. The report completed and all 51 unit tests passed.
-- The raw directory measured 441 MB while manifest-listed PDFs measured 297.29 MB; I recorded these separately.
+
+- Final dataset report confirms 35 PDFs, 4,466 pages, and 500.99 MB; 4,162 pages have extractable text.
