@@ -196,8 +196,7 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 ## D06 · Collecting the corpus
 
 - Start target: 10 years of NE monsoon reports + 20 cyclone reports.
-- Final manifest report: 23 PDF files, 2,908 pages, 297.29 MB.
-- Raw directory size: 441 MB; this is a separate measurement from the manifest-listed PDFs.
+- Final dataset report: 35 PDF files, 4,466 pages, 500.99 MB; 4,162 pages have extractable text.
 - The earlier Day 4 coverage figures are historical results. This final report supersedes those measurements.
 - Doors used: manually collected source URL lists and official IMD/RSMC archive pages.
 
@@ -211,8 +210,18 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 
 ### robots.txt
 
-- Verify each source domain's robots.txt directives before recording exact rules.
-- Confirm blocked URLs and actions from fetch logs; do not assume none were blocked.
+Checked on 2026-11-26:
+
+| Domain | robots.txt result |
+|---|---|
+| mausam.imd.gov.in | HTTP 404 Not Found |
+| rsmcnewdelhi.imd.gov.in | HTTP 404 Not Found |
+| api.imd.gov.in | HTTP 404 Not Found |
+
+- No robots.txt directives were available at these URLs on the check date.
+- A 404 response is not permission to crawl or reuse content.
+- Keep requests polite, rate-limited, and subject to manual licence review.
+- Check the manifest and fetch logs for actual blocked-request outcomes.
 
 ### Kill and resume
 
@@ -224,11 +233,47 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 
 ### Capacity
 
-- Estimated tokens per page: 334 (extracted characters divided by 4).
-- Full corpus target: 1.34 M tokens, 2,673 chunks, embedding about Rs 25.39, vectors 10.44 MB.
-- 2,900 of 2,908 pages had extractable text; 8 did not.
+- Measured corpus: 4,466 pages; 4,162 pages have extractable text.
+- Estimated tokens per page: 318 (extracted characters divided by 4).
+- Full 4,000-page target: 1.27 M tokens, 2,544 chunks, embedding about Rs 24.16, vectors 9.94 MB.
 
 ### One thing that went wrong today, and how I fixed it
 
 - Some PDFs produced fontTools encoding warnings. The report completed and all 51 unit tests passed.
-- The raw directory measured 441 MB while manifest-listed PDFs measured 297.29 MB; I recorded these separately.
+
+- Final dataset report confirms 35 PDFs, 4,466 pages, and 500.99 MB; 4,162 pages have extractable text.
+
+## D07 - PDF Parser Comparison
+
+Compared PyMuPDF and pypdf on the 10 largest downloaded PDF files.
+Page counts matched for all 10 files.
+
+| PDF file | Pages (PyMuPDF/pypdf) | PyMuPDF chars | pypdf chars | Observation |
+|---|---:|---:|---:|---|
+| 27-81bdf0-rsmc-report-2021-a1ac4b0b.pdf | 345/345 | 552471 | 546439 | PyMuPDF extracted more characters |
+| ar2017-44b0d87d.pdf | 144/144 | 342336 | 343806 | pypdf extracted more characters |
+| 27-4e1280-rsmc-2014-4155ff27.pdf | 241/241 | 313192 | 310625 | PyMuPDF extracted more characters |
+| annual-report2016english-aa1b0960.pdf | 142/142 | 342091 | 341620 | PyMuPDF extracted more characters |
+| 27-bbaf11-rsmc-2017-438e4fd0.pdf | 328/328 | 416994 | 412920 | PyMuPDF extracted more characters |
+| 27-9bbd0d-rsmc-2015-84120eb6.pdf | 338/338 | 382254 | 378275 | PyMuPDF extracted more characters |
+| 27-2f6165-rsmc-2011-c91bde82.pdf | 186/186 | 197434 | 194457 | PyMuPDF extracted more characters |
+| ne-monsoon-2023-51d18bec.pdf | 85/85 | 89624 | 89081 | PyMuPDF extracted more characters |
+| ne-monsoon-2022-32b05142.pdf | 66/66 | 69121 | 68615 | PyMuPDF extracted more characters |
+| ne-monsoon-2021-3952a738.pdf | 63/63 | 60160 | 59682 | PyMuPDF extracted more characters |
+
+### Comparison conclusion
+
+- Both parsers successfully opened all 10 selected PDFs.
+- Extracted page counts matched in every file.
+- PyMuPDF produced more extracted characters in 9 files; pypdf produced more in 1.
+- Character count is a quantitative comparison, not proof of semantic accuracy. Text order, headings, tables, and encoding still require inspection.
+- PyMuPDF emitted a malformed-PDF stitching warning on one report. pypdf emitted font encoding warnings on a report.
+- Current ingestion uses PyMuPDF. Keep it as the primary parser and use pypdf as a comparison/fallback candidate; inspect problematic pages before changing parser selection.
+
+### D07 parsing outcome and known limitation
+
+- Neon database verification: 49 documents, 3,831 parsed pages, and 5 parse failures.
+- All 5 failures are scanned image-only PDFs from the IMD RSMC corpus.
+- The affected PDFs contain 296 pages in total; PyMuPDF and pypdf both returned almost no extractable text.
+- Tesseract OCR is not installed in the parsing environment. These files remain recorded as `no_text_layer`; they are not counted as successfully parsed.
+- OCR remains future work. No OCR output has been added to the database.

@@ -7,6 +7,7 @@ import pymupdf
 import trafilatura
 
 TEXT_EXTENSIONS = {".txt", ".md", ".markdown"}
+MIN_PAGE_CHARS = 50
 
 
 def detect_suffix(path: Path) -> str:
@@ -21,13 +22,41 @@ def detect_suffix(path: Path) -> str:
     return suffix
 
 
+def _extract_pdf_page(page) -> str:
+    """Extract native text first, then OCR scanned pages."""
+    try:
+        native_text = page.get_text("text").strip()
+    except Exception:
+        native_text = ""
+
+    if len(native_text) >= MIN_PAGE_CHARS:
+        return native_text
+
+    try:
+        textpage = page.get_textpage_ocr(
+            language="eng",
+            dpi=120,
+            full=True,
+        )
+        ocr_text = page.get_text("text", textpage=textpage).strip()
+
+        if len(ocr_text) > len(native_text):
+            return ocr_text
+    except Exception:
+        # Keep native text; corpus script records documents with
+        # insufficient extracted text as parse failures.
+        pass
+
+    return native_text
+
+
 def parse_file(path: Path) -> str:
     """Extract text from a downloaded PDF, HTML, TXT, or Markdown file."""
     suffix = detect_suffix(path)
 
     if suffix == ".pdf":
         with pymupdf.open(path) as document:
-            return "\n".join(page.get_text("text") for page in document)
+            return "\n".join(_extract_pdf_page(page) for page in document)
 
     if suffix in {".html", ".htm"}:
         html = path.read_text(encoding="utf-8", errors="replace")
@@ -51,7 +80,10 @@ def parse_pages(path: Path) -> list[dict]:
     if suffix == ".pdf":
         with pymupdf.open(path) as document:
             pages = [
-                {"page_no": index, "text": page.get_text("text").strip()}
+                {
+                    "page_no": index,
+                    "text": _extract_pdf_page(page),
+                }
                 for index, page in enumerate(document, start=1)
             ]
     else:
