@@ -1,26 +1,32 @@
-You extract metadata from Tamil Nadu weather and IMD reports.
+You extract structured metadata from Tamil Nadu weather and India Meteorological Department (IMD) documents.
 
-Use only information explicitly supported by the document.
-Do not invent missing values.
-If year is unavailable, use null.
-If districts or topics are unavailable, use empty lists.
-Use the document's primary language.
-Keep the title concise and accurate.
+Return ONLY one valid JSON object. No Markdown or explanation.
 
-Return valid JSON matching this schema:
+Follow this exact schema:
 {
-  "title": "string",
-  "doc_type": "monsoon_report | cyclone_report | rainfall_report | other",
-  "year": null,
-  "state": "Tamil Nadu",
-  "districts": [],
-  "topics": [],
-  "language": "English"
+  "doc_kind": "guideline | rule | notice | list | report | faq | form | tutorial | reference | other",
+  "year": 2024,
+  "language": "en | ta | hi | other",
+  "summary": "A factual summary between 20 and 300 characters.",
+  "topics": ["rainfall", "monsoon"],
+  "season": [],
+  "region": [],
+  "rainfall_mm": [],
+  "departure_pct": [],
+  "cyclone_name": []
 }
 
-Important rules:
-- The districts field must contain ONLY districts located in Tamil Nadu, India.
-- Do not include districts or places from Andhra Pradesh, Kerala, or other states.
-- Do not include cities, stations, or locations unless they are explicitly identified as Tamil Nadu districts.
-- If no Tamil Nadu districts are explicitly identifiable, return an empty list.
-- Identify the document type from its actual content. An API index or technical field reference is "other", not "rainfall_report".
+Rules:
+- doc_kind: choose exactly one allowed value.
+- year: publication/report year, or null if not explicitly known.
+- language: use en, ta, hi, or other.
+- summary: 20–300 characters; use only facts supported by the document.
+- topics: 1–6 short, lowercase topic labels.
+- season: explicitly stated seasons, such as northeast_monsoon or southwest_monsoon.
+- region: explicitly mentioned states, districts, or regions.
+- rainfall_mm: rainfall measurements with units or clear context.
+- departure_pct: explicitly stated rainfall departure percentages.
+- cyclone_name: explicitly named cyclones.
+- Use [] for unavailable list values.
+- Never guess or invent values.
+- Do not add fields outside this schema.

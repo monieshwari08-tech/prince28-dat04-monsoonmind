@@ -295,18 +295,49 @@ Evaluated four versioned classification prompts against the 20-question labeled 
 - The test set contains only 20 questions; these results are not a guarantee of general accuracy.
 - Keep the four prompt versions for comparison; select the production version based on further evaluation.
 
-
-
 ## D09 - Structured Document Metadata Extraction
 
-- Added the Pydantic `DocMeta` schema in `src/monsoonmind/llm/doc_meta.py`.
-- Added versioned extraction instructions in `prompts/extract_v1.md`.
-- Added gateway-based metadata extraction with JSON validation and one repair attempt.
-- Added resumable runner: `scripts/extract_metadata.py`; processes up to five report documents per run.
-- Extracted and verified metadata for all 36 report documents: 36 successful, 0 failures.
-- Extracted types: 10 `monsoon_report`, 22 `cyclone_report`, 4 `other`.
+### Prompt router evaluation
+
+- Evaluated `classify_v1` through `classify_v4` against the 20-question test set in `eval/prompt_testset.jsonl`.
+- All four versions scored 20/20 (100%) in the latest evaluation.
+- Evaluation script: `scripts/compare_prompts.py`.
+- The test set is small and does not guarantee general accuracy.
+
+### Metadata schema and extraction
+
+- Added strict Pydantic `DocMeta` schema in `src/monsoonmind/llm/doc_meta.py`.
+- Fields: `doc_kind`, `year`, `language`, `summary`, `topics`, `season`, `region`, `rainfall_mm`, `departure_pct`, and `cyclone_name`.
+- Added versioned extraction prompt: `prompts/extract_v1.md`.
+- Added generic JSON parsing, Pydantic validation, and up to three validation attempts with repair feedback.
+- Added optional native JSON-schema response mode.
+- Added resumable extraction runner: `scripts/extract_metadata.py`.
+- Runner supports document limits, request pacing, text limits, retrying failed documents, and optional native schema output.
 - Metadata is stored in the existing `documents.metadata` JSONB column.
-- LLM usage recorded: 38 calls, 281,365 input tokens, 5,238 output tokens.
-- Recorded extraction cost: INR 9.262925 (approximately ₹9.26).
-- Prompt rules restrict districts to Tamil Nadu and classify API references as `other`.
-- The 20-question prompt evaluation is a small test set and does not establish general accuracy.
+
+### Extraction results
+
+- Eligible documents: 36.
+- Successful: 36.
+- Failed: 0.
+- Extracted document kinds: 35 reports and 1 reference.
+- Input tokens: 43,840.
+- Output tokens: 6,225.
+- Total extraction cost: ₹2.727876.
+- Average cost per document: approximately ₹0.075774.
+- Prompt version: `extract_v1`.
+
+### Limitations and observations
+
+- The runner currently extracts from the first three parsed pages, up to 6,000 characters per document. Measurements or cyclone names appearing later in a report may therefore be absent.
+- Publication year and report year can differ. For example, the Northeast Monsoon 2025 report was published in 2026; the extracted year 2026 follows the prompt's publication-year rule.
+- Empty metadata lists mean the requested value was not found in the supplied text; they do not prove the full document contains no such information.
+- The extraction runner records attempts, validation errors, token usage, and cost for each document.
+
+### Verification
+
+- Unit tests: 94 passed.
+- Ruff lint: passed.
+- Ruff format check: passed.
+- `git diff --check`: passed.
+- One non-blocking urllib3 warning remains because optional PySocks is not installed.
