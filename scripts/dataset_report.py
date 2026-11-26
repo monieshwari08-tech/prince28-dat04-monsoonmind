@@ -13,6 +13,15 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data/manifest.jsonl"
 
 
+def is_pdf_file(path: Path) -> bool:
+    """Check PDF content instead of relying on the filename extension."""
+    try:
+        with path.open("rb") as file:
+            return b"%PDF-" in file.read(1024)
+    except OSError:
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--full-pages", type=int, default=4000)
@@ -41,11 +50,7 @@ def main():
             except json.JSONDecodeError:
                 continue
             path = ROOT / item.get("path", "")
-            if (
-                item.get("status") == "downloaded"
-                and path.is_file()
-                and path.suffix.lower() == ".pdf"
-            ):
+            if item.get("status") == "downloaded" and path.is_file() and is_pdf_file(path):
                 item["_path"] = path
                 records.append(item)
 

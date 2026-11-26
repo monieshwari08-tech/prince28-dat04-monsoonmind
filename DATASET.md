@@ -23,12 +23,12 @@ Public IMD publications; copyright applies unless a source states otherwise. Ope
 
 ## Measured corpus
 
-- **PDF files:** 26
-- **Pages:** 3248
-- **Local size:** 357.74 MB
-- **Pages with extractable text:** 3240 / 3248
-- **Estimated extracted text:** 4,377,355 characters
-- **Estimated tokens per page:** 337 (characters ÷ 4)
+- **PDF files:** 35
+- **Pages:** 4466
+- **Local size:** 500.99 MB
+- **Pages with extractable text:** 4162 / 4466
+- **Estimated extracted text:** 5,679,773 characters
+- **Estimated tokens per page:** 318 (characters ÷ 4)
 
 ### By source
 
@@ -36,23 +36,32 @@ Public IMD publications; copyright applies unless a source states otherwise. Ope
 |---|---:|---:|---:|
 | imd_chennai | 11 | 568 | 82.75 |
 | imd_metnet | 2 | 286 | 52.13 |
-| imd_rsmc | 13 | 2394 | 222.86 |
+| imd_rsmc | 22 | 3612 | 366.11 |
 
 ### Downloaded documents
 
 | Document | Source | Pages | Size (MB) | Text pages | Licence / reuse terms |
 |---|---|---:|---:|---:|
+| Annual Cyclone Report 1998 | imd_rsmc | 75 | 3.47 | 0 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 1999 | imd_rsmc | 74 | 4.52 | 0 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2002 | imd_rsmc | 37 | 2.51 | 0 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2003 | imd_rsmc | 49 | 2.74 | 0 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2004 | imd_rsmc | 61 | 3.83 | 0 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2005 | imd_rsmc | 66 | 2.16 | 66 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2006 | imd_rsmc | 89 | 3.09 | 89 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2007 | imd_rsmc | 98 | 3.90 | 98 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2008 | imd_rsmc | 108 | 4.88 | 108 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2009 | imd_rsmc | 122 | 4.02 | 122 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2010 | imd_rsmc | 162 | 6.21 | 162 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2011 | imd_rsmc | 186 | 14.82 | 186 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2012 | imd_rsmc | 214 | 10.52 | 214 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2013 | imd_rsmc | 278 | 34.60 | 278 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2014 | imd_rsmc | 241 | 26.98 | 241 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2015 | imd_rsmc | 338 | 15.34 | 338 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2016 | imd_rsmc | 271 | 56.95 | 271 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2017 | imd_rsmc | 328 | 19.86 | 323 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2021 | imd_rsmc | 345 | 57.17 | 345 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| Annual Cyclone Report 2023 | imd_rsmc | 438 | 82.81 | 438 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Annual Cyclone Report 2024 | imd_rsmc | 22 | 3.58 | 22 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | IMD Annual Report 2016 - Northeast Monsoon coverage | imd_metnet | 142 | 24.53 | 142 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | IMD Annual Report 2017 - Northeast Monsoon coverage | imd_metnet | 144 | 27.59 | 141 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
