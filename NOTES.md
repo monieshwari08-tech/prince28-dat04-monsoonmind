@@ -277,3 +277,36 @@ Page counts matched for all 10 files.
 - The affected PDFs contain 296 pages in total; PyMuPDF and pypdf both returned almost no extractable text.
 - Tesseract OCR is not installed in the parsing environment. These files remain recorded as `no_text_layer`; they are not counted as successfully parsed.
 - OCR remains future work. No OCR output has been added to the database.
+
+## D09 - Prompt Router Evaluation
+
+Evaluated four versioned classification prompts against the 20-question labeled test set in `eval/prompt_testset.jsonl`.
+
+| Prompt | Correct | Accuracy |
+|---|---:|---:|
+| classify_v1 | 20/20 | 100% |
+| classify_v2 | 20/20 | 100% |
+| classify_v3 | 20/20 | 100% |
+| classify_v4 | 20/20 | 100% |
+
+- Evaluation script: `scripts/compare_prompts.py`
+- Cached results: `eval/prompt_results.json`
+- All four prompts scored 20/20 on the fresh evaluation run.
+- The test set contains only 20 questions; these results are not a guarantee of general accuracy.
+- Keep the four prompt versions for comparison; select the production version based on further evaluation.
+
+
+
+## D09 - Structured Document Metadata Extraction
+
+- Added the Pydantic `DocMeta` schema in `src/monsoonmind/llm/doc_meta.py`.
+- Added versioned extraction instructions in `prompts/extract_v1.md`.
+- Added gateway-based metadata extraction with JSON validation and one repair attempt.
+- Added resumable runner: `scripts/extract_metadata.py`; processes up to five report documents per run.
+- Extracted and verified metadata for all 36 report documents: 36 successful, 0 failures.
+- Extracted types: 10 `monsoon_report`, 22 `cyclone_report`, 4 `other`.
+- Metadata is stored in the existing `documents.metadata` JSONB column.
+- LLM usage recorded: 38 calls, 281,365 input tokens, 5,238 output tokens.
+- Recorded extraction cost: INR 9.262925 (approximately ₹9.26).
+- Prompt rules restrict districts to Tamil Nadu and classify API references as `other`.
+- The 20-question prompt evaluation is a small test set and does not establish general accuracy.
