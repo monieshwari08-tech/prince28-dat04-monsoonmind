@@ -1,6 +1,7 @@
 """Measure the downloaded MonsoonMind PDF corpus and generate capacity reports."""
 
 import argparse
+import csv
 import json
 import math
 from collections import defaultdict
@@ -12,6 +13,15 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data/manifest.jsonl"
 
 
+def is_pdf_file(path: Path) -> bool:
+    """Check PDF content instead of relying on the filename extension."""
+    try:
+        with path.open("rb") as file:
+            return b"%PDF-" in file.read(1024)
+    except OSError:
+        return False
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--full-pages", type=int, default=4000)
@@ -21,6 +31,17 @@ def main():
     parser.add_argument("--usd-inr", type=float, default=95)
     args = parser.parse_args()
 
+    source_licences = {}
+    source_csv = ROOT / "data/sources.csv"
+    if source_csv.exists():
+        with source_csv.open(encoding="utf-8", newline="") as source_file:
+            for source_row in csv.DictReader(
+                line for line in source_file if not line.startswith("#")
+            ):
+                source_licences[source_row.get("title", "")] = source_row.get(
+                    "licence", "Not recorded"
+                )
+
     records = []
     if MANIFEST.exists():
         for line in MANIFEST.read_text(encoding="utf-8").splitlines():
@@ -29,11 +50,7 @@ def main():
             except json.JSONDecodeError:
                 continue
             path = ROOT / item.get("path", "")
-            if (
-                item.get("status") == "downloaded"
-                and path.is_file()
-                and path.suffix.lower() == ".pdf"
-            ):
+            if item.get("status") == "downloaded" and path.is_file() and is_pdf_file(path):
                 item["_path"] = path
                 records.append(item)
 
@@ -90,7 +107,10 @@ def main():
                 "pages": pages,
                 "size_mb": size / 1024 / 1024,
                 "text_pages": text_pages,
-                "licence": item.get("licence", "Not recorded"),
+                "licence": (
+                    item.get("licence")
+                    or source_licences.get(item.get("title", ""), "Not recorded")
+                ),
                 "error": error,
             }
         )
@@ -115,13 +135,14 @@ def main():
         )
 
     document_lines = [
-        "| Document | Source | Pages | Size (MB) | Text pages |",
+        "| Document | Source | Pages | Size (MB) | Text pages | Licence / reuse terms |",
         "|---|---|---:|---:|---:|",
     ]
     for row in rows:
         document_lines.append(
             f"| {row['title'].replace('|', '/')} | {row['source']} | "
-            f"{row['pages']} | {row['size_mb']:.2f} | {row['text_pages']} |"
+            f"{row['pages']} | {row['size_mb']:.2f} | {row['text_pages']} | "
+            f"{row['licence'].replace('|', '/')} |"
         )
 
     dataset_generated = f"""## Measured corpus

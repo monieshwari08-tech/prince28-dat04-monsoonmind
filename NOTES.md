@@ -196,8 +196,7 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 ## D06 · Collecting the corpus
 
 - Start target: 10 years of NE monsoon reports + 20 cyclone reports.
-- Final manifest report: 23 PDF files, 2,908 pages, 297.29 MB.
-- Raw directory size: 441 MB; this is a separate measurement from the manifest-listed PDFs.
+- Final dataset report: 35 PDF files, 4,466 pages, 500.99 MB; 4,162 pages have extractable text.
 - The earlier Day 4 coverage figures are historical results. This final report supersedes those measurements.
 - Doors used: manually collected source URL lists and official IMD/RSMC archive pages.
 
@@ -211,8 +210,18 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 
 ### robots.txt
 
-- Verify each source domain's robots.txt directives before recording exact rules.
-- Confirm blocked URLs and actions from fetch logs; do not assume none were blocked.
+Checked on 2026-11-26:
+
+| Domain | robots.txt result |
+|---|---|
+| mausam.imd.gov.in | HTTP 404 Not Found |
+| rsmcnewdelhi.imd.gov.in | HTTP 404 Not Found |
+| api.imd.gov.in | HTTP 404 Not Found |
+
+- No robots.txt directives were available at these URLs on the check date.
+- A 404 response is not permission to crawl or reuse content.
+- Keep requests polite, rate-limited, and subject to manual licence review.
+- Check the manifest and fetch logs for actual blocked-request outcomes.
 
 ### Kill and resume
 
@@ -224,11 +233,12 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 
 ### Capacity
 
-- Estimated tokens per page: 334 (extracted characters divided by 4).
-- Full corpus target: 1.34 M tokens, 2,673 chunks, embedding about Rs 25.39, vectors 10.44 MB.
-- 2,900 of 2,908 pages had extractable text; 8 did not.
+- Measured corpus: 4,466 pages; 4,162 pages have extractable text.
+- Estimated tokens per page: 318 (extracted characters divided by 4).
+- Full 4,000-page target: 1.27 M tokens, 2,544 chunks, embedding about Rs 24.16, vectors 9.94 MB.
 
 ### One thing that went wrong today, and how I fixed it
 
 - Some PDFs produced fontTools encoding warnings. The report completed and all 51 unit tests passed.
-- The raw directory measured 441 MB while manifest-listed PDFs measured 297.29 MB; I recorded these separately.
+
+- Final dataset report confirms 35 PDFs, 4,466 pages, and 500.99 MB; 4,162 pages have extractable text.
