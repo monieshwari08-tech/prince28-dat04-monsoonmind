@@ -232,3 +232,30 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 
 - Some PDFs produced fontTools encoding warnings. The report completed and all 51 unit tests passed.
 - The raw directory measured 441 MB while manifest-listed PDFs measured 297.29 MB; I recorded these separately.
+
+## D07 - PDF Parser Comparison
+
+Compared PyMuPDF and pypdf on the 10 largest downloaded PDF files.
+Page counts matched for all 10 files.
+
+| PDF file | Pages (PyMuPDF/pypdf) | PyMuPDF chars | pypdf chars | Observation |
+|---|---:|---:|---:|---|
+| 27-81bdf0-rsmc-report-2021-a1ac4b0b.pdf | 345/345 | 552471 | 546439 | PyMuPDF extracted more characters |
+| ar2017-44b0d87d.pdf | 144/144 | 342336 | 343806 | pypdf extracted more characters |
+| 27-4e1280-rsmc-2014-4155ff27.pdf | 241/241 | 313192 | 310625 | PyMuPDF extracted more characters |
+| annual-report2016english-aa1b0960.pdf | 142/142 | 342091 | 341620 | PyMuPDF extracted more characters |
+| 27-bbaf11-rsmc-2017-438e4fd0.pdf | 328/328 | 416994 | 412920 | PyMuPDF extracted more characters |
+| 27-9bbd0d-rsmc-2015-84120eb6.pdf | 338/338 | 382254 | 378275 | PyMuPDF extracted more characters |
+| 27-2f6165-rsmc-2011-c91bde82.pdf | 186/186 | 197434 | 194457 | PyMuPDF extracted more characters |
+| ne-monsoon-2023-51d18bec.pdf | 85/85 | 89624 | 89081 | PyMuPDF extracted more characters |
+| ne-monsoon-2022-32b05142.pdf | 66/66 | 69121 | 68615 | PyMuPDF extracted more characters |
+| ne-monsoon-2021-3952a738.pdf | 63/63 | 60160 | 59682 | PyMuPDF extracted more characters |
+
+### Comparison conclusion
+
+- Both parsers successfully opened all 10 selected PDFs.
+- Extracted page counts matched in every file.
+- PyMuPDF produced more extracted characters in 9 files; pypdf produced more in 1.
+- Character count is a quantitative comparison, not proof of semantic accuracy. Text order, headings, tables, and encoding still require inspection.
+- PyMuPDF emitted a malformed-PDF stitching warning on one report. pypdf emitted font encoding warnings on a report.
+- Current ingestion uses PyMuPDF. Keep it as the primary parser and use pypdf as a comparison/fallback candidate; inspect problematic pages before changing parser selection.
