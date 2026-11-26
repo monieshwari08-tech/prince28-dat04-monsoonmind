@@ -277,3 +277,67 @@ Page counts matched for all 10 files.
 - The affected PDFs contain 296 pages in total; PyMuPDF and pypdf both returned almost no extractable text.
 - Tesseract OCR is not installed in the parsing environment. These files remain recorded as `no_text_layer`; they are not counted as successfully parsed.
 - OCR remains future work. No OCR output has been added to the database.
+
+## D09 - Prompt Router Evaluation
+
+Evaluated four versioned classification prompts against the 20-question labeled test set in `eval/prompt_testset.jsonl`.
+
+| Prompt | Correct | Accuracy |
+|---|---:|---:|
+| classify_v1 | 20/20 | 100% |
+| classify_v2 | 20/20 | 100% |
+| classify_v3 | 20/20 | 100% |
+| classify_v4 | 20/20 | 100% |
+
+- Evaluation script: `scripts/compare_prompts.py`
+- Cached results: `eval/prompt_results.json`
+- All four prompts scored 20/20 on the fresh evaluation run.
+- The test set contains only 20 questions; these results are not a guarantee of general accuracy.
+- Keep the four prompt versions for comparison; select the production version based on further evaluation.
+
+## D09 - Structured Document Metadata Extraction
+
+### Prompt router evaluation
+
+- Evaluated `classify_v1` through `classify_v4` against the 20-question test set in `eval/prompt_testset.jsonl`.
+- All four versions scored 20/20 (100%) in the latest evaluation.
+- Evaluation script: `scripts/compare_prompts.py`.
+- The test set is small and does not guarantee general accuracy.
+
+### Metadata schema and extraction
+
+- Added strict Pydantic `DocMeta` schema in `src/monsoonmind/llm/doc_meta.py`.
+- Fields: `doc_kind`, `year`, `language`, `summary`, `topics`, `season`, `region`, `rainfall_mm`, `departure_pct`, and `cyclone_name`.
+- Added versioned extraction prompt: `prompts/extract_v1.md`.
+- Added generic JSON parsing, Pydantic validation, and up to three validation attempts with repair feedback.
+- Added optional native JSON-schema response mode.
+- Added resumable extraction runner: `scripts/extract_metadata.py`.
+- Runner supports document limits, request pacing, text limits, retrying failed documents, and optional native schema output.
+- Metadata is stored in the existing `documents.metadata` JSONB column.
+
+### Extraction results
+
+- Eligible documents: 36.
+- Successful: 36.
+- Failed: 0.
+- Extracted document kinds: 35 reports and 1 reference.
+- Input tokens: 43,840.
+- Output tokens: 6,225.
+- Total extraction cost: ₹2.727876.
+- Average cost per document: approximately ₹0.075774.
+- Prompt version: `extract_v1`.
+
+### Limitations and observations
+
+- The runner currently extracts from the first three parsed pages, up to 6,000 characters per document. Measurements or cyclone names appearing later in a report may therefore be absent.
+- Publication year and report year can differ. For example, the Northeast Monsoon 2025 report was published in 2026; the extracted year 2026 follows the prompt's publication-year rule.
+- Empty metadata lists mean the requested value was not found in the supplied text; they do not prove the full document contains no such information.
+- The extraction runner records attempts, validation errors, token usage, and cost for each document.
+
+### Verification
+
+- Unit tests: 94 passed.
+- Ruff lint: passed.
+- Ruff format check: passed.
+- `git diff --check`: passed.
+- One non-blocking urllib3 warning remains because optional PySocks is not installed.

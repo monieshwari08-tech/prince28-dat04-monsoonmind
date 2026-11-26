@@ -1,0 +1,722 @@
+{
+  "v1|What was Tamil Nadu's northeast monsoon rainfall in 2020?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 109,
+    "tokens_out": 10,
+    "cost_inr": 0.005481
+  },
+  "v1|Summarize the IMD cyclone report for 2018.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 107,
+    "tokens_out": 5,
+    "cost_inr": 0.004237
+  },
+  "v1|Which districts received heavy rainfall during northeast monsoon?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 102,
+    "tokens_out": 5,
+    "cost_inr": 0.004095
+  },
+  "v1|Explain the northeast monsoon in Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 101,
+    "tokens_out": 10,
+    "cost_inr": 0.005253
+  },
+  "v1|What does an IMD rainfall departure mean?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 102,
+    "tokens_out": 10,
+    "cost_inr": 0.005282
+  },
+  "v1|Find historical cyclone landfalls near Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 102,
+    "tokens_out": 10,
+    "cost_inr": 0.005282
+  },
+  "v1|Compare monsoon rainfall across two years.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 100,
+    "tokens_out": 10,
+    "cost_inr": 0.005225
+  },
+  "v1|What is the source of the rainfall statistics?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 102,
+    "tokens_out": 10,
+    "cost_inr": 0.005282
+  },
+  "v1|Show the district rainfall recorded in an IMD report.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 104,
+    "tokens_out": 10,
+    "cost_inr": 0.005339
+  },
+  "v1|What were the weather conditions during a past cyclone?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 103,
+    "tokens_out": 5,
+    "cost_inr": 0.004123
+  },
+  "v1|What is my account information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 99,
+    "tokens_out": 5,
+    "cost_inr": 0.004009
+  },
+  "v1|What questions have I asked before?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 100,
+    "tokens_out": 10,
+    "cost_inr": 0.005225
+  },
+  "v1|Show my saved preferences.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 98,
+    "tokens_out": 10,
+    "cost_inr": 0.005168
+  },
+  "v1|What is my usage history?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 99,
+    "tokens_out": 10,
+    "cost_inr": 0.005196
+  },
+  "v1|How many requests have I made?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 100,
+    "tokens_out": 10,
+    "cost_inr": 0.005225
+  },
+  "v1|Tell me about my MonsoonMind account.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 101,
+    "tokens_out": 10,
+    "cost_inr": 0.005253
+  },
+  "v1|What is my current session information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 100,
+    "tokens_out": 10,
+    "cost_inr": 0.005225
+  },
+  "v1|Can you remember my previous question?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 100,
+    "tokens_out": 10,
+    "cost_inr": 0.005225
+  },
+  "v1|Who won the latest cricket match?": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 164,
+    "tokens_out": 43,
+    "cost_inr": 0.002394
+  },
+  "v1|Write a poem about friendship.": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 163,
+    "tokens_out": 42,
+    "cost_inr": 0.002358
+  },
+  "v2|What was Tamil Nadu's northeast monsoon rainfall in 2020?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 179,
+    "tokens_out": 81,
+    "cost_inr": 0.003584
+  },
+  "v2|Summarize the IMD cyclone report for 2018.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 178,
+    "tokens_out": 80,
+    "cost_inr": 0.003548
+  },
+  "v2|Which districts received heavy rainfall during northeast monsoon?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 175,
+    "tokens_out": 75,
+    "cost_inr": 0.003384
+  },
+  "v2|Explain the northeast monsoon in Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 174,
+    "tokens_out": 79,
+    "cost_inr": 0.003491
+  },
+  "v2|What does an IMD rainfall departure mean?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 174,
+    "tokens_out": 80,
+    "cost_inr": 0.00352
+  },
+  "v2|Find historical cyclone landfalls near Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 174,
+    "tokens_out": 78,
+    "cost_inr": 0.003463
+  },
+  "v2|Compare monsoon rainfall across two years.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 173,
+    "tokens_out": 75,
+    "cost_inr": 0.00337
+  },
+  "v2|What is the source of the rainfall statistics?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 174,
+    "tokens_out": 76,
+    "cost_inr": 0.003406
+  },
+  "v2|Show the district rainfall recorded in an IMD report.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 176,
+    "tokens_out": 82,
+    "cost_inr": 0.003591
+  },
+  "v2|What were the weather conditions during a past cyclone?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 175,
+    "tokens_out": 75,
+    "cost_inr": 0.003384
+  },
+  "v2|What is my account information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 171,
+    "tokens_out": 68,
+    "cost_inr": 0.003156
+  },
+  "v2|What questions have I asked before?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 172,
+    "tokens_out": 75,
+    "cost_inr": 0.003363
+  },
+  "v2|Show my saved preferences.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 170,
+    "tokens_out": 67,
+    "cost_inr": 0.003121
+  },
+  "v2|What is my usage history?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 171,
+    "tokens_out": 69,
+    "cost_inr": 0.003185
+  },
+  "v2|How many requests have I made?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 172,
+    "tokens_out": 54,
+    "cost_inr": 0.002765
+  },
+  "v2|Tell me about my MonsoonMind account.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 174,
+    "tokens_out": 77,
+    "cost_inr": 0.003434
+  },
+  "v2|What is my current session information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 172,
+    "tokens_out": 53,
+    "cost_inr": 0.002736
+  },
+  "v2|Can you remember my previous question?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 172,
+    "tokens_out": 71,
+    "cost_inr": 0.003249
+  },
+  "v2|Who won the latest cricket match?": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 172,
+    "tokens_out": 123,
+    "cost_inr": 0.004731
+  },
+  "v2|Write a poem about friendship.": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 171,
+    "tokens_out": 46,
+    "cost_inr": 0.002529
+  },
+  "v3|What was Tamil Nadu's northeast monsoon rainfall in 2020?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 155,
+    "tokens_out": 95,
+    "cost_inr": 0.003812
+  },
+  "v3|Summarize the IMD cyclone report for 2018.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 154,
+    "tokens_out": 70,
+    "cost_inr": 0.003092
+  },
+  "v3|Which districts received heavy rainfall during northeast monsoon?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 151,
+    "tokens_out": 80,
+    "cost_inr": 0.003356
+  },
+  "v3|Explain the northeast monsoon in Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 150,
+    "tokens_out": 79,
+    "cost_inr": 0.00332
+  },
+  "v3|What does an IMD rainfall departure mean?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 150,
+    "tokens_out": 102,
+    "cost_inr": 0.003976
+  },
+  "v3|Find historical cyclone landfalls near Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 150,
+    "tokens_out": 82,
+    "cost_inr": 0.003406
+  },
+  "v3|Compare monsoon rainfall across two years.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 149,
+    "tokens_out": 73,
+    "cost_inr": 0.003142
+  },
+  "v3|What is the source of the rainfall statistics?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 150,
+    "tokens_out": 103,
+    "cost_inr": 0.004004
+  },
+  "v3|Show the district rainfall recorded in an IMD report.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 152,
+    "tokens_out": 68,
+    "cost_inr": 0.003021
+  },
+  "v3|What were the weather conditions during a past cyclone?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 151,
+    "tokens_out": 71,
+    "cost_inr": 0.003099
+  },
+  "v3|What is my account information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 147,
+    "tokens_out": 40,
+    "cost_inr": 0.002187
+  },
+  "v3|What questions have I asked before?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 148,
+    "tokens_out": 83,
+    "cost_inr": 0.00342
+  },
+  "v3|Show my saved preferences.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "groq",
+    "model": "openai/gpt-oss-20b",
+    "tokens_in": 146,
+    "tokens_out": 35,
+    "cost_inr": 0.002038
+  },
+  "v3|What is my usage history?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 89,
+    "tokens_out": 5,
+    "cost_inr": 0.003724
+  },
+  "v3|How many requests have I made?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 90,
+    "tokens_out": 10,
+    "cost_inr": 0.00494
+  },
+  "v3|Tell me about my MonsoonMind account.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 91,
+    "tokens_out": 5,
+    "cost_inr": 0.003781
+  },
+  "v3|What is my current session information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 90,
+    "tokens_out": 5,
+    "cost_inr": 0.003752
+  },
+  "v3|Can you remember my previous question?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 90,
+    "tokens_out": 5,
+    "cost_inr": 0.003752
+  },
+  "v3|Who won the latest cricket match?": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 90,
+    "tokens_out": 7,
+    "cost_inr": 0.004227
+  },
+  "v3|Write a poem about friendship.": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 89,
+    "tokens_out": 7,
+    "cost_inr": 0.004199
+  },
+  "v4|What was Tamil Nadu's northeast monsoon rainfall in 2020?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 129,
+    "tokens_out": 10,
+    "cost_inr": 0.006051
+  },
+  "v4|Summarize the IMD cyclone report for 2018.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 127,
+    "tokens_out": 10,
+    "cost_inr": 0.005994
+  },
+  "v4|Which districts received heavy rainfall during northeast monsoon?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 122,
+    "tokens_out": 10,
+    "cost_inr": 0.005852
+  },
+  "v4|Explain the northeast monsoon in Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 121,
+    "tokens_out": 5,
+    "cost_inr": 0.004636
+  },
+  "v4|What does an IMD rainfall departure mean?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 122,
+    "tokens_out": 10,
+    "cost_inr": 0.005852
+  },
+  "v4|Find historical cyclone landfalls near Tamil Nadu.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 122,
+    "tokens_out": 5,
+    "cost_inr": 0.004665
+  },
+  "v4|Compare monsoon rainfall across two years.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 120,
+    "tokens_out": 10,
+    "cost_inr": 0.005795
+  },
+  "v4|What is the source of the rainfall statistics?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 122,
+    "tokens_out": 10,
+    "cost_inr": 0.005852
+  },
+  "v4|Show the district rainfall recorded in an IMD report.": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 124,
+    "tokens_out": 5,
+    "cost_inr": 0.004721
+  },
+  "v4|What were the weather conditions during a past cyclone?": {
+    "prediction": "docs",
+    "expected": "docs",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 123,
+    "tokens_out": 10,
+    "cost_inr": 0.005881
+  },
+  "v4|What is my account information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 119,
+    "tokens_out": 5,
+    "cost_inr": 0.004579
+  },
+  "v4|What questions have I asked before?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 120,
+    "tokens_out": 5,
+    "cost_inr": 0.004607
+  },
+  "v4|Show my saved preferences.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 118,
+    "tokens_out": 5,
+    "cost_inr": 0.00455
+  },
+  "v4|What is my usage history?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 119,
+    "tokens_out": 10,
+    "cost_inr": 0.005766
+  },
+  "v4|How many requests have I made?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 120,
+    "tokens_out": 5,
+    "cost_inr": 0.004607
+  },
+  "v4|Tell me about my MonsoonMind account.": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 121,
+    "tokens_out": 5,
+    "cost_inr": 0.004636
+  },
+  "v4|What is my current session information?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 120,
+    "tokens_out": 10,
+    "cost_inr": 0.005795
+  },
+  "v4|Can you remember my previous question?": {
+    "prediction": "personal",
+    "expected": "personal",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 120,
+    "tokens_out": 10,
+    "cost_inr": 0.005795
+  },
+  "v4|Who won the latest cricket match?": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 120,
+    "tokens_out": 7,
+    "cost_inr": 0.005083
+  },
+  "v4|Write a poem about friendship.": {
+    "prediction": "off_topic",
+    "expected": "off_topic",
+    "provider": "gemini",
+    "model": "gemini-3.5-flash-lite",
+    "tokens_in": 119,
+    "tokens_out": 12,
+    "cost_inr": 0.006241
+  }
+}
