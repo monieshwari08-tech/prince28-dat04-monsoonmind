@@ -26,7 +26,7 @@ Actual database storage will be higher due to indexes, metadata and row overhead
 
 ## What I conclude
 
-1. Embedding cost is not a major concern at the 4,000-page target: about Rs 25.39, excluding other service costs.
-2. Estimated vectors are 10.44 MB and raw text is about 5.10 MB. I still need to compare these estimates with my actual free Postgres storage limit.
+1. Embedding cost is not a major concern at the 4,000-page target: about Rs 24.16, excluding other service costs.
+2. Estimated vectors are 9.94 MB and raw text is about 4.85 MB. I still need to compare these estimates with my actual free Postgres storage limit.
 3. Tokens per page is the least certain estimate because characters divided by 4 is approximate. I will measure actual tokenizer output on a representative sample.
-4. At 10 times the corpus size, estimates become about 13.36 million tokens, 26,730 chunks, Rs 253.90 embedding cost and 104.4 MB of vectors. I will monitor storage and retrieval latency.
+4. At 10 times the corpus size, estimates become about 12.72 million tokens, 25,440 chunks, Rs 241.60 embedding cost and 99.4 MB of vectors. I will monitor storage and retrieval latency.

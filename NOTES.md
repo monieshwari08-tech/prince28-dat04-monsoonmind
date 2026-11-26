@@ -234,9 +234,9 @@ Checked on 2026-11-26:
 
 ### Capacity
 
-- Estimated tokens per page: 334 (extracted characters divided by 4).
-- Full corpus target: 1.34 M tokens, 2,673 chunks, embedding about Rs 25.39, vectors 10.44 MB.
-- 2,900 of 2,908 pages had extractable text; 8 did not.
+- Measured corpus: 4,466 pages; 4,162 pages have extractable text.
+- Estimated tokens per page: 318 (extracted characters divided by 4).
+- Full 4,000-page target: 1.27 M tokens, 2,544 chunks, embedding about Rs 24.16, vectors 9.94 MB.
 
 ### One thing that went wrong today, and how I fixed it
 
