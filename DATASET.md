@@ -73,6 +73,8 @@ Public IMD publications; copyright applies unless a source states otherwise. Ope
 
 ## Known gaps
 
+- RSMC Annual Cyclone Reports 2019 and 2020 returned HTTP 404 at the recorded source URLs during the 2026-11-26 retry; they are not included in the downloaded corpus.
+
 - Only 8 dedicated annual Northeast Monsoon reports (2018–2025) are confirmed in the current collection. 2016 and 2017 have supporting IMD annual reports, not confirmed dedicated annual NEM reports.
 - Some reports may be scanned or have little extractable text; inspect the text-page counts above.
 - IMD copyright and permission for displaying full report text require manual review.

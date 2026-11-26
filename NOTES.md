@@ -211,8 +211,18 @@ The earlier Day 4 coverage figures are historical results. This final report sup
 
 ### robots.txt
 
-- Verify each source domain's robots.txt directives before recording exact rules.
-- Confirm blocked URLs and actions from fetch logs; do not assume none were blocked.
+Checked on 2026-11-26:
+
+| Domain | robots.txt result |
+|---|---|
+| mausam.imd.gov.in | HTTP 404 Not Found |
+| rsmcnewdelhi.imd.gov.in | HTTP 404 Not Found |
+| api.imd.gov.in | HTTP 404 Not Found |
+
+- No robots.txt directives were available at these URLs on the check date.
+- A 404 response is not permission to crawl or reuse content.
+- Keep requests polite, rate-limited, and subject to manual licence review.
+- Check the manifest and fetch logs for actual blocked-request outcomes.
 
 ### Kill and resume
 
