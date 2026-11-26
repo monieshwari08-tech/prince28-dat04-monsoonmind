@@ -1,6 +1,7 @@
 """Measure the downloaded MonsoonMind PDF corpus and generate capacity reports."""
 
 import argparse
+import csv
 import json
 import math
 from collections import defaultdict
@@ -20,6 +21,17 @@ def main():
     parser.add_argument("--chunk-tokens", type=int, default=500)
     parser.add_argument("--usd-inr", type=float, default=95)
     args = parser.parse_args()
+
+    source_licences = {}
+    source_csv = ROOT / "data/sources.csv"
+    if source_csv.exists():
+        with source_csv.open(encoding="utf-8", newline="") as source_file:
+            for source_row in csv.DictReader(
+                line for line in source_file if not line.startswith("#")
+            ):
+                source_licences[source_row.get("title", "")] = source_row.get(
+                    "licence", "Not recorded"
+                )
 
     records = []
     if MANIFEST.exists():
@@ -90,7 +102,10 @@ def main():
                 "pages": pages,
                 "size_mb": size / 1024 / 1024,
                 "text_pages": text_pages,
-                "licence": item.get("licence", "Not recorded"),
+                "licence": (
+                    item.get("licence")
+                    or source_licences.get(item.get("title", ""), "Not recorded")
+                ),
                 "error": error,
             }
         )
@@ -115,13 +130,14 @@ def main():
         )
 
     document_lines = [
-        "| Document | Source | Pages | Size (MB) | Text pages |",
+        "| Document | Source | Pages | Size (MB) | Text pages | Licence / reuse terms |",
         "|---|---|---:|---:|---:|",
     ]
     for row in rows:
         document_lines.append(
             f"| {row['title'].replace('|', '/')} | {row['source']} | "
-            f"{row['pages']} | {row['size_mb']:.2f} | {row['text_pages']} |"
+            f"{row['pages']} | {row['size_mb']:.2f} | {row['text_pages']} | "
+            f"{row['licence'].replace('|', '/')} |"
         )
 
     dataset_generated = f"""## Measured corpus

@@ -8,15 +8,15 @@ Full corpus target: All monsoon, cyclone and RMC reports since 2010 (4,000+ page
 
 | Measure | Estimate |
 |---|---:|
-| Measured average tokens per page | 334 |
+| Measured average tokens per page | 337 |
 | Full corpus target | 4,000 pages |
-| Projected full-corpus tokens | 1,336,076 (1.34 M) |
+| Projected full-corpus tokens | 1,347,708 (1.35 M) |
 | Chunk size | 500 tokens |
-| Projected chunks | 2,673 |
+| Projected chunks | 2,696 |
 | Embedding dimensions | 1024 |
-| Estimated embedding cost | $0.2672 (about Rs 25.39) |
-| Estimated vector storage (float32) | 10.44 MB |
-| Estimated raw text storage (rough) | 5.10 MB |
+| Estimated embedding cost | $0.2695 (about Rs 25.61) |
+| Estimated vector storage (float32) | 10.53 MB |
+| Estimated raw text storage (rough) | 5.14 MB |
 
 *Assumptions: tokens are estimated as extracted characters ÷ 4; embedding price is
 the supplied USD per million tokens; vector storage assumes 4 bytes per dimension.
