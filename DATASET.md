@@ -23,11 +23,11 @@ Public IMD publications; copyright applies unless a source states otherwise. Ope
 
 ## Measured corpus
 
-- **PDF files:** 36
-- **Pages:** 4488
-- **Local size:** 502.79 MB
-- **Pages with extractable text:** 4184 / 4488
-- **Estimated extracted text:** 5,719,676 characters
+- **PDF files:** 37
+- **Pages:** 4514
+- **Local size:** 511.14 MB
+- **Pages with extractable text:** 4210 / 4514
+- **Estimated extracted text:** 5,751,346 characters
 - **Estimated tokens per page:** 319 (characters ÷ 4)
 
 ### By source
@@ -35,7 +35,7 @@ Public IMD publications; copyright applies unless a source states otherwise. Ope
 | Source | Files | Pages | Size (MB) |
 |---|---:|---:|---:|
 | imd_chennai | 12 | 590 | 84.55 |
-| imd_metnet | 2 | 286 | 52.13 |
+| imd_metnet | 3 | 312 | 60.48 |
 | imd_rsmc | 22 | 3612 | 366.11 |
 
 ### Downloaded documents
@@ -77,6 +77,7 @@ Public IMD publications; copyright applies unless a source states otherwise. Ope
 | Northeast Monsoon 2025 | imd_chennai | 56 | 9.97 | 56 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Salient Features of Cyclonic Disturbances 2022 | imd_rsmc | 10 | 2.15 | 10 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | Salient Features of Northeast Monsoon 2016 | imd_chennai | 22 | 1.80 | 22 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
+| cdbi_postmonsoon_2017 | imd_metnet | 26 | 8.36 | 26 | Public IMD publication; copyright applies; automated download and reuse permission not confirmed; manual review required |
 | nem-2016 | imd_chennai | 22 | 1.80 | 22 | Public IMD publication; copyright applies; reuse permission requires manual review |
 
 <!-- generated:end -->
