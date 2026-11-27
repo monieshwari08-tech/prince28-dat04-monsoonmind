@@ -341,3 +341,21 @@ Evaluated four versioned classification prompts against the 20-question labeled 
 - Ruff format check: passed.
 - `git diff --check`: passed.
 - One non-blocking urllib3 warning remains because optional PySocks is not installed.
+
+## D08 - Live LLM Usage Verification
+
+Verified against the production MonsoonMind API on 27 Nov 2026.
+
+Successful live chat calls:
+- Groq fallback (`openai/gpt-oss-20b`): 244 input tokens, 714 output tokens, ₹0.022088.
+- Gemini primary (`gemini-3.8-flash`): 181 input tokens, 134 output tokens, ₹0.060634.
+- Gemini primary (`gemini-3.8-flash`): 181 input tokens, 146 output tokens, ₹0.064909.
+
+Usage endpoint after the live calls:
+- Total calls: 84
+- Errors: 1
+- Fallbacks: 1
+- Tokens: 340,039
+- Total recorded cost: ₹12.3663
+
+The production `/v1/chat` endpoint returned successful answers from both Gemini primary and Groq fallback. `/v1/usage` reflected the recorded production usage.
