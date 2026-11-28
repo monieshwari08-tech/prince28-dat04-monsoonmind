@@ -4,14 +4,17 @@ import asyncio
 from collections.abc import AsyncIterator
 from typing import Annotated
 
-from fastapi import Depends, Request
+from fastapi import Depends, HTTPException, Request
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from monsoonmind.config import Settings
+from monsoonmind.db.ingest_jobs import IngestJobRepository
 from monsoonmind.db.llm_calls import UsageRepository
 from monsoonmind.db.repository import DocumentRepository
+from monsoonmind.ingest.fetch import Manifest
 from monsoonmind.llm.gateway import LLMGateway
+from monsoonmind.workers.queue import Queue
 
 
 def get_app_settings(request: Request) -> Settings:
@@ -24,8 +27,31 @@ async def get_session(request: Request) -> AsyncIterator[AsyncSession]:
         yield session
 
 
-async def get_repo(session: Annotated[AsyncSession, Depends(get_session)]) -> DocumentRepository:
+async def get_repo(
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> DocumentRepository:
     return DocumentRepository(session)
+
+
+async def get_ingest_repo(
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> IngestJobRepository:
+    return IngestJobRepository(session)
+
+
+async def get_queue(request: Request) -> Queue:
+    """Connect to Redis only when an endpoint needs the queue."""
+    try:
+        return await Queue.connect(request.app.state.settings.redis_url)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=503,
+            detail="Ingestion queue is unavailable",
+        ) from exc
+
+
+def get_manifest(request: Request) -> Manifest:
+    return Manifest(request.app.state.settings.manifest_file)
 
 
 async def check_db(request: Request) -> bool:
@@ -42,7 +68,9 @@ def get_gateway(request: Request) -> LLMGateway:
     return request.app.state.gateway
 
 
-async def get_usage_repo(session: Annotated[AsyncSession, Depends(get_session)]) -> UsageRepository:
+async def get_usage_repo(
+    session: Annotated[AsyncSession, Depends(get_session)],
+) -> UsageRepository:
     return UsageRepository(session)
 
 
@@ -50,4 +78,7 @@ SettingsDep = Annotated[Settings, Depends(get_app_settings)]
 GatewayDep = Annotated[LLMGateway, Depends(get_gateway)]
 UsageDep = Annotated[UsageRepository, Depends(get_usage_repo)]
 RepoDep = Annotated[DocumentRepository, Depends(get_repo)]
+IngestRepoDep = Annotated[IngestJobRepository, Depends(get_ingest_repo)]
+QueueDep = Annotated[Queue, Depends(get_queue)]
+ManifestDep = Annotated[Manifest, Depends(get_manifest)]
 DbCheckDep = Annotated[bool, Depends(check_db)]
